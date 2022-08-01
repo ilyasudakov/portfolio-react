@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
-import React from "react";
+import Image from "next/image";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import { projectsList } from "../data/landing";
 
 const FIGMA_PORTFOLIO_URL =
@@ -44,15 +45,10 @@ const TextBlock: React.FC<{
 const OutsideLink: React.FC<{
   children: React.ReactNode;
   href: string;
-  style?: "default" | "none";
-}> = ({ children, href, style = "default" }) => {
-  const styles = {
-    default: "text-fuchsia-500 inline w-fit border-b border-fuchsia-500",
-    none: "",
-  };
+}> = ({ children, href }) => {
   return (
     <a
-      className={styles[style]}
+      className="text-fuchsia-500 inline w-fit border-b border-fuchsia-500"
       target="_blank"
       rel="noreferrer noopener"
       href={href}
@@ -65,11 +61,22 @@ const OutsideLink: React.FC<{
 const Title: React.FC = () => {
   return (
     <TextBlock>
-      <div>
-        <div className="text-3xl font-bold text-stone-50 mb-2">
-          Илья Судаков
+      <div className="flex justify-between">
+        <div>
+          <div className="text-3xl font-bold text-stone-50 mb-2">
+            Илья Судаков
+          </div>
+          <div>Junior React-разработчик</div>
         </div>
-        <div>Junior React-разработчик</div>
+        <div className="flex overflow-hidden rounded-full border-2 border-stone-200">
+          <Image
+            src="/headshot.jpg"
+            className="max-w-full"
+            width="100px"
+            height="100px"
+            alt="Profile image"
+          />
+        </div>
       </div>
     </TextBlock>
   );
@@ -102,13 +109,13 @@ const About: React.FC = () => {
 const Projects: React.FC = () => {
   return (
     <TextBlock title="Проекты">
-      <ul className="list-none flex flex-col gap-2">
+      <ul className="grid grid-cols-2 items-stretch gap-2 w-full">
         {projectsList.map(({ projectName, href, description }) => (
-          <OutsideLink href={href} style="none" key={projectName}>
+          <a key={projectName} href={href}>
             <li className="rounded-lg px-4 py-4 border-stone-500 border-2">
               {`${projectName} — ${description}`}
             </li>
-          </OutsideLink>
+          </a>
         ))}
       </ul>
     </TextBlock>
@@ -120,9 +127,11 @@ const Education: React.FC = () => {
     <TextBlock title="Образование">
       <ul>
         <li>
-          <span>Программная инженерия</span> - Санкт-Петербургский
-          Государственный Университет Телекоммуникаций им. М.А. Бонч-Бруевича.
-          Бакалавр (2016 — 2020)
+          <span className="font-bold text-stone-100">
+            Программная инженерия
+          </span>{" "}
+          — Санкт-Петербургский Государственный Университет Телекоммуникаций им.
+          М.А. Бонч-Бруевича. Бакалавр (2016 — 2020)
         </li>
       </ul>
     </TextBlock>
@@ -134,8 +143,9 @@ const WorkExperience: React.FC = () => {
     <TextBlock title="Опыт работы">
       <ul>
         <li>
-          <span>2020 — 2021</span> - компания Osfix. Фронтенд-разработчик
-          CRM/ERP-системы, используемой на малом предприятии.
+          <span className="font-bold text-stone-100">2020 — 2021</span> -
+          компания Osfix. Фронтенд-разработчик CRM/ERP-системы, используемой на
+          малом предприятии.
         </li>
       </ul>
     </TextBlock>

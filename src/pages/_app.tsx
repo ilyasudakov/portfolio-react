@@ -1,11 +1,18 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="container mx-auto px-4 lg:px-[10%] py-[5vh]">
-      <Component {...pageProps} />
-    </div>
+    <>
+      <Head>
+        <link rel="icon" type="favicon" href="favicon.ico" />
+        <title>@ilyasudakov</title>
+      </Head>
+      <div className="container mx-auto px-4 lg:px-[10%] py-[10vh]">
+        <Component {...pageProps} />
+      </div>
+    </>
   );
 }
 
