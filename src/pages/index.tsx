@@ -26,10 +26,10 @@ const TextBlock: React.FC<{
   title?: string;
 }> = ({ children, title }) => {
   return (
-    <div className="my-2 flex flex-col text-stone-300">
+    <div className="mb-14 flex flex-col text-stone-300">
       <>
         {title ? (
-          <div className="text-xl font-bold text-stone-50">{title}</div>
+          <div className="text-xl font-bold text-stone-50 mb-2">{title}</div>
         ) : null}
         {children}
       </>
@@ -43,7 +43,7 @@ const OutsideLink: React.FC<{
 }> = ({ children, href }) => {
   return (
     <a
-      className="text-indigo-500 inline w-fit"
+      className="text-indigo-500 inline w-fit border-b border-indigo-500"
       target="_blank"
       rel="noreferrer noopener"
       href={href}

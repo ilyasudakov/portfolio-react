@@ -10,3 +10,11 @@ html {
 ul {
   @apply list-disc list-inside;
 }
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+ul li:last-child {
+  margin-bottom: 0;
+}
