@@ -1,7 +1,11 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import React, { createRef, useEffect, useRef, useState } from "react";
+import React from "react";
+
 import { projectsList } from "../data/landing";
+import GithubIcon from "/public/svg/github.svg";
+import MailIcon from "/public/svg/mail.svg";
+import LinkedInIcon from "/public/svg/linkedin.svg";
 
 const FIGMA_PORTFOLIO_URL =
   process.env.FIGMA_PORTFOLIO_URL ??
@@ -18,7 +22,6 @@ const Home: NextPage = () => {
       <Projects />
       <Education />
       <WorkExperience />
-      <Contacts />
     </div>
   );
 };
@@ -58,15 +61,50 @@ const OutsideLink: React.FC<{
   );
 };
 
+const ContactButton: React.FC<{
+  href: string;
+  children: React.ReactNode;
+}> = ({ href, children }) => {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="rounded px-4 py-1 flex justify-center items-center w-fit gap-1
+      bg-[#E8AEF0] text-stone-900"
+    >
+      {children}
+    </a>
+  );
+};
+
+const ContactsList = () => {
+  return (
+    <div className="flex gap-2 flex-wrap">
+      <ContactButton href="https://github.com/ilyasudakov">
+        <GithubIcon width="15px" height="15px" />
+        Github
+      </ContactButton>
+      <ContactButton href="https://github.com/ilyasudakov">
+        <MailIcon width="20px" height="20px" />
+        Почта
+      </ContactButton>
+      <ContactButton href="https://github.com/ilyasudakov">
+        <LinkedInIcon width="15px" height="15px" />
+        LinkedIn
+      </ContactButton>
+    </div>
+  );
+};
+
 const Title: React.FC = () => {
   return (
     <TextBlock>
-      <div className="flex justify-between">
-        <div>
-          <div className="text-3xl font-bold text-stone-50 mb-2">
-            Илья Судаков
-          </div>
+      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <div className="flex flex-col gap-2">
+          <div className="text-3xl font-bold text-stone-50">Илья Судаков</div>
           <div>React-разработчик</div>
+          <ContactsList />
         </div>
         <div className="flex overflow-hidden rounded-full border-2 border-stone-200">
           <Image
@@ -109,34 +147,44 @@ const About: React.FC = () => {
 const Projects: React.FC = () => {
   return (
     <TextBlock title="Проекты">
-      <ul className="grid sm:grid-cols-2 items-stretch gap-6 w-full">
-        {projectsList.map(({ projectName, href, description, image }) => (
-          <a
-            className="flex flex-col h-full w-fit"
-            key={projectName}
-            href={href}
-          >
-            <li className="flex flex-col h-full">
-              <div className="relative w-full h-auto aspect-video rounded-lg">
-                <Image
-                  layout="fill"
-                  src={image}
-                  className="rounded-lg"
-                  objectFit="cover" // change to suit your needs
-                  alt={`${projectName} image`}
-                ></Image>
-              </div>
-              <div className="px-4 py-2">
-                <div className="text-lg text-center text-stone-100">
-                  {projectName}
-                </div>
-                <div className="text-sm">{description}</div>
-              </div>
-            </li>
-          </a>
+      <ul className="grid sm:grid-cols-2 gap-6 w-full">
+        {projectsList.map((project) => (
+          <ProjectItem key={project.projectName} project={project} />
         ))}
       </ul>
     </TextBlock>
+  );
+};
+
+const ProjectItem: React.FC<{
+  project: {
+    projectName: string;
+    href: string;
+    description: string;
+    image: string;
+  };
+}> = ({ project }) => {
+  const { projectName, href, description, image } = project;
+  return (
+    <li>
+      <a href={href} target="_blank" rel="noreferrer noopener">
+        <div className="relative aspect-video rounded-lg">
+          <Image
+            layout="fill"
+            src={image}
+            className="rounded-lg"
+            objectFit="cover"
+            alt={`${projectName} image`}
+          ></Image>
+        </div>
+        <div className="px-4 py-2">
+          <div className="text-lg text-center text-stone-100">
+            {projectName}
+          </div>
+          <div className="text-sm">{description}</div>
+        </div>
+      </a>
+    </li>
   );
 };
 
@@ -166,30 +214,6 @@ const WorkExperience: React.FC = () => {
           малом предприятии.
         </li>
       </ul>
-    </TextBlock>
-  );
-};
-
-const Contacts: React.FC = () => {
-  return (
-    <TextBlock title="Обратная связь">
-      <div>
-        <pre className="w-fit inline">&#9;&#9;&#9;</pre>
-        <span className="inline">
-          Вы можете связаться со мной по{" "}
-          <OutsideLink href="mailto:ilyasudakov.dev@gmail.com">
-            почте
-          </OutsideLink>
-          , а также посмотреть мой профиль на{" "}
-          <OutsideLink href="https://github.com/ilyasudakov">
-            Github
-          </OutsideLink>{" "}
-          или{" "}
-          <OutsideLink href="https://www.linkedin.com/in/ilya-sudakov/">
-            LinkedIn.
-          </OutsideLink>
-        </span>
-      </div>
     </TextBlock>
   );
 };
