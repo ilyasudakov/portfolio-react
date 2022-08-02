@@ -66,7 +66,7 @@ const Title: React.FC = () => {
           <div className="text-3xl font-bold text-stone-50 mb-2">
             Илья Судаков
           </div>
-          <div>Junior React-разработчик</div>
+          <div>React-разработчик</div>
         </div>
         <div className="flex overflow-hidden rounded-full border-2 border-stone-200">
           <Image
@@ -109,11 +109,29 @@ const About: React.FC = () => {
 const Projects: React.FC = () => {
   return (
     <TextBlock title="Проекты">
-      <ul className="grid grid-cols-2 items-stretch gap-2 w-full">
-        {projectsList.map(({ projectName, href, description }) => (
-          <a key={projectName} href={href}>
-            <li className="rounded-lg px-4 py-4 border-stone-500 border-2">
-              {`${projectName} — ${description}`}
+      <ul className="grid sm:grid-cols-2 items-stretch gap-6 w-full">
+        {projectsList.map(({ projectName, href, description, image }) => (
+          <a
+            className="flex flex-col h-full w-fit"
+            key={projectName}
+            href={href}
+          >
+            <li className="flex flex-col h-full">
+              <div className="relative w-full h-auto aspect-video rounded-lg">
+                <Image
+                  layout="fill"
+                  src={image}
+                  className="rounded-lg"
+                  objectFit="cover" // change to suit your needs
+                  alt={`${projectName} image`}
+                ></Image>
+              </div>
+              <div className="px-4 py-2">
+                <div className="text-lg text-center text-stone-100">
+                  {projectName}
+                </div>
+                <div className="text-sm">{description}</div>
+              </div>
             </li>
           </a>
         ))}
