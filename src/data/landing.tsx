@@ -3,6 +3,7 @@ type projectsListTypes = {
   href: string;
   description: string;
   image: string;
+  stack?: string[];
 }[];
 
 export const projectsList: projectsListTypes = [
@@ -11,27 +12,29 @@ export const projectsList: projectsListTypes = [
     href: "https://github.com/ilyasudakov/CRM_frontend",
     description: "Фронтенд для системы управления малым предприятием",
     image: "/projects/osfix_crm.png",
+    stack: ["React", "SCSS", "Jest", "RTL"],
   },
   {
     projectName: "repo.md",
     href: "https://github.com/ilyasudakov/repo.md",
-    description:
-      "Ваш Github репозиторий как Markdown блог (NextJS, TypeScript, NextAuth, Tailwind, Jest, RTL)",
+    description: "Ваш Github репозиторий как Markdown блог",
     image: "/projects/repo_md.png",
+    stack: ["NextJS", "TS", "NextAuth", "TW", "Jest", "RTL"],
   },
   {
     projectName: "CMS Блог",
     href: "https://github.com/ilyasudakov/cms_blog",
     description:
-      "Блог с авторизацией, возможностью создавать собственные посты (TypeScript, Next.js, NextAuth.js, Tailwind)",
+      "Блог с авторизацией, возможностью создавать собственные посты",
     image: "/projects/cms_blog.png",
+    stack: ["NextJS", "TS", "NextAuth", "TW"],
   },
   {
     projectName: "react-base",
     href: "https://github.com/ilyasudakov/basic-react-boilerplate",
-    description:
-      "Простой шаблон для React-проектов (React 17 + Webpack 5 + SCSS + Jest/RTL)",
+    description: "Простой шаблон для React-проектов",
     image: "/projects/react_base.png",
+    stack: ["React", "Webpack 5", "SCSS", "Jest/RTL"],
   },
   {
     projectName: "Weather App",
@@ -39,6 +42,7 @@ export const projectsList: projectsListTypes = [
     description:
       "Приложение для просмотра погоды по геолокации пользователя, с возможностью просмотра прогноза на 7 дней",
     image: "/projects/weather_app.png",
+    stack: ["React", "SCSS"],
   },
   {
     projectName: "Spotify Statistics",
@@ -46,6 +50,7 @@ export const projectsList: projectsListTypes = [
     description:
       "Приложение для просмотра любимых песен/исполнителей, а также получение списка рекомендаций в Spotify",
     image: "/projects/spotify_stats.png",
+    stack: ["React", "SCSS"],
   },
   // {
   //   projectName: "Torrent",
@@ -59,6 +64,7 @@ export const projectsList: projectsListTypes = [
     href: "https://github.com/ilyasudakov/ThreeJS_test",
     description: "Простой эксперимент с использованием ThreeJS",
     image: "/projects/ocean_threejs.png",
+    stack: ["React", "React-Three-Fiber"],
   },
 ];
 

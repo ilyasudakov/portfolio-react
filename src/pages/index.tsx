@@ -139,6 +139,7 @@ const About: React.FC = () => {
         <br />
         Ищу возможности получения реального опыта разработки, работы в команде,
         полезного фидбека для улучшения своих навыков и получения новых знаний.
+        Быстро обучаем, люблю учиться.
       </div>
     </TextBlock>
   );
@@ -162,9 +163,10 @@ const ProjectItem: React.FC<{
     href: string;
     description: string;
     image: string;
+    stack?: string[];
   };
 }> = ({ project }) => {
-  const { projectName, href, description, image } = project;
+  const { projectName, href, description, image, stack } = project;
   return (
     <li>
       <a href={href} target="_blank" rel="noreferrer noopener">
@@ -182,6 +184,15 @@ const ProjectItem: React.FC<{
             {projectName}
           </div>
           <div className="text-sm">{description}</div>
+          {stack ? (
+            <div className="text-sm flex px-3 py-1 w-fit mx-auto flex-wrap items-center justify-center">
+              {stack.map((tool) => (
+                <div key={tool} className="px-1  text-stone-500">
+                  {tool}
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </a>
     </li>
