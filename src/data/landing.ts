@@ -9,48 +9,55 @@ export const projectsList: projectsListTypes = [
   {
     projectName: "CRM/ERP система",
     href: "https://github.com/ilyasudakov/CRM_frontend",
-    description: "фронтенд для системы управления малым предприятием",
-    image: "/projects/repo.md.png",
+    description: "Фронтенд для системы управления малым предприятием",
+    image: "/projects/osfix_crm.png",
+  },
+  {
+    projectName: "repo.md",
+    href: "https://github.com/ilyasudakov/repo.md",
+    description:
+      "Ваш Github репозиторий как Markdown блог (NextJS, TypeScript, NextAuth, Tailwind, Jest, RTL)",
+    image: "/projects/repo_md.png",
   },
   {
     projectName: "CMS Блог",
     href: "https://github.com/ilyasudakov/cms_blog",
     description:
       "Блог с авторизацией, возможностью создавать собственные посты (TypeScript, Next.js, NextAuth.js, Tailwind)",
-    image: "/projects/repo.md.png",
+    image: "/projects/cms_blog.png",
   },
   {
     projectName: "react-base",
     href: "https://github.com/ilyasudakov/basic-react-boilerplate",
     description:
-      "простой шаблон для React-проектов (React 17 + Webpack 5 + SCSS + Jest/RTL)",
-    image: "/projects/repo.md.png",
+      "Простой шаблон для React-проектов (React 17 + Webpack 5 + SCSS + Jest/RTL)",
+    image: "/projects/react_base.png",
   },
   {
     projectName: "Weather App",
     href: "https://github.com/ilyasudakov/weatherApp",
     description:
-      "приложение для просмотра погоды по геолокации пользователя, с возможностью просмотра прогноза на 7 дней",
-    image: "/projects/repo.md.png",
+      "Приложение для просмотра погоды по геолокации пользователя, с возможностью просмотра прогноза на 7 дней",
+    image: "/projects/weather_app.png",
   },
   {
     projectName: "Spotify Statistics",
     href: "https://github.com/ilyasudakov/music_app",
     description:
-      "приложение для просмотра любимых песен/исполнителей, а также получение списка рекомендаций в Spotify",
-    image: "/projects/repo.md.png",
+      "Приложение для просмотра любимых песен/исполнителей, а также получение списка рекомендаций в Spotify",
+    image: "/projects/spotify_stats.png",
   },
-  {
-    projectName: "Torrent",
-    href: "https://github.com/ilyasudakov/torrent_app",
-    description:
-      "позволяет скачивать раздачи с помощью торрент файлов, узнать прогресс скачивания файлов (React + WebTorrent)",
-    image: "/projects/repo.md.png",
-  },
+  // {
+  //   projectName: "Torrent",
+  //   href: "https://github.com/ilyasudakov/torrent_app",
+  //   description:
+  //     "Позволяет скачивать раздачи с помощью торрент файлов, узнать прогресс скачивания файлов (React + WebTorrent)",
+  //   image: "/projects/repo.md.png",
+  // },
   {
     projectName: "Ocean",
     href: "https://github.com/ilyasudakov/ThreeJS_test",
-    description: "простой эксперимент с использованием ThreeJS",
-    image: "/projects/repo.md.png",
+    description: "Простой эксперимент с использованием ThreeJS",
+    image: "/projects/ocean_threejs.png",
   },
 ];
