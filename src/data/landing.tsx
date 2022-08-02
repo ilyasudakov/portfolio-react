@@ -61,3 +61,35 @@ export const projectsList: projectsListTypes = [
     image: "/projects/ocean_threejs.png",
   },
 ];
+
+const SmallTextPeriod: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  return <span className="font-normal text-stone-300 text-sm">{children}</span>;
+};
+
+export const bioPeriods = [
+  {
+    period: <span>2016 — 2020</span>,
+    description:
+      "Программная инженерия. Санкт-Петербургский Государственный Университет Телекоммуникаций им. М.А. Бонч-Бруевича. Бакалавр",
+  },
+  {
+    period: (
+      <span>
+        2020 — 2021 <SmallTextPeriod>март</SmallTextPeriod>
+      </span>
+    ),
+    description:
+      "Компания Osfix. Фронтенд-разработчик CRM/ERP-системы, используемой на малом предприятии.",
+  },
+  {
+    period: (
+      <span>
+        2021 <SmallTextPeriod>май</SmallTextPeriod> — 2022{" "}
+        <SmallTextPeriod>май</SmallTextPeriod>
+      </span>
+    ),
+    description: "Служба по призыву",
+  },
+];

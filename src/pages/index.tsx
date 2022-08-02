@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import React from "react";
 
-import { projectsList } from "../data/landing";
+import { bioPeriods, projectsList } from "../data/landing";
 import GithubIcon from "/public/svg/github.svg";
 import MailIcon from "/public/svg/mail.svg";
 import LinkedInIcon from "/public/svg/linkedin.svg";
@@ -20,8 +20,8 @@ const Home: NextPage = () => {
       <Title />
       <About />
       <Projects />
-      <Education />
-      <WorkExperience />
+      <Bio />
+      <Copyright />
     </div>
   );
 };
@@ -51,7 +51,7 @@ const OutsideLink: React.FC<{
 }> = ({ children, href }) => {
   return (
     <a
-      className="text-fuchsia-500 inline w-fit border-b border-fuchsia-500"
+      className="text-fuchsia-400 inline w-fit border-b border-fuchsia-400"
       target="_blank"
       rel="noreferrer noopener"
       href={href}
@@ -106,7 +106,7 @@ const Title: React.FC = () => {
           <div>React-разработчик</div>
           <ContactsList />
         </div>
-        <div className="flex overflow-hidden rounded-full border-2 border-stone-200">
+        <div className="flex self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
           <Image
             src="/headshot.jpg"
             className="max-w-full"
@@ -195,25 +195,41 @@ const Education: React.FC = () => {
         <li>
           <span className="font-bold text-stone-100">
             Программная инженерия
-          </span>{" "}
-          — Санкт-Петербургский Государственный Университет Телекоммуникаций им.
-          М.А. Бонч-Бруевича. Бакалавр (2016 — 2020)
+          </span>
+          <span className="ml-[2rem]">
+            Санкт-Петербургский Государственный Университет Телекоммуникаций им.
+            М.А. Бонч-Бруевича. Бакалавр (2016 — 2020)
+          </span>
         </li>
       </ul>
     </TextBlock>
   );
 };
 
-const WorkExperience: React.FC = () => {
+const Bio: React.FC = () => {
   return (
-    <TextBlock title="Опыт работы">
-      <ul>
-        <li>
-          <span className="font-bold text-stone-100">2020 — 2021</span> -
-          компания Osfix. Фронтенд-разработчик CRM/ERP-системы, используемой на
-          малом предприятии.
-        </li>
+    <TextBlock title="Биография">
+      <ul className="flex flex-col gap-4">
+        {bioPeriods.map(({ period, description }) => (
+          <li key={description}>
+            <div className="flex flex-col sm:flex-row">
+              <div className="font-bold text-stone-100 text-left w-full sm:max-w-[20ch]">
+                {period}
+              </div>
+              <div className="text-left">{description}</div>
+            </div>
+          </li>
+        ))}
       </ul>
     </TextBlock>
+  );
+};
+
+const Copyright: React.FC = () => {
+  return (
+    <div className="text-center text-sm text-stone-500">
+      <div>© 2022 Илья Судаков.</div>
+      <div>Сделано с NextJS, TypeScript, Tailwind.</div>
+    </div>
   );
 };
