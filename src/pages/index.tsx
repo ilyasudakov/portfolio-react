@@ -49,8 +49,8 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
       ref={ref}
       className={`transition duration-1000 ${
         inView || wasInView
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-20"
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 translate-x-20"
       }`}
     >
       {children}
