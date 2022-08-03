@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { bioPeriods, projectsList } from "../data/landing";
 import GithubIcon from "/public/svg/github.svg";
 import MailIcon from "/public/svg/mail.svg";
 import LinkedInIcon from "/public/svg/linkedin.svg";
+import { InView, useInView } from "react-intersection-observer";
 
 const FIGMA_PORTFOLIO_URL =
   process.env.FIGMA_PORTFOLIO_URL ??
@@ -20,12 +21,39 @@ const Home: NextPage = () => {
       <Title />
       <About />
       <Projects />
-      <Bio />
+      <AnimationWrapper>
+        <Bio />
+      </AnimationWrapper>
       <Copyright />
     </div>
   );
 };
 export default Home;
+
+const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const { ref, inView } = useInView();
+  const [wasInView, setWasInView] = useState(false);
+
+  useEffect(() => {
+    if (wasInView) return;
+    if (inView) setWasInView(true);
+  }, [inView, wasInView]);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition duration-1000 ${
+        inView || wasInView
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-20"
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const TextBlock: React.FC<{
   children: React.ReactNode;
@@ -123,24 +151,26 @@ const Title: React.FC = () => {
 const About: React.FC = () => {
   return (
     <TextBlock title="Обо мне">
-      <div>
-        <pre className="w-fit inline">&#9;&#9;&#9;</pre>
-        <span>
-          React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
-          работу по вакансии junior-разработчик. Вы можете посмотреть мое
-          портфолио
-        </span>{" "}
-        <OutsideLink href={FIGMA_PORTFOLIO_URL}>здесь</OutsideLink> или
-        <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
-          {" "}
-          скачать в формате PDF.
-        </OutsideLink>
-        <br />
-        <br />
-        Ищу возможности получения реального опыта разработки, работы в команде,
-        полезного фидбека для улучшения своих навыков и получения новых знаний.
-        Быстро обучаем, люблю учиться.
-      </div>
+      <AnimationWrapper>
+        <div>
+          <pre className="w-fit inline">&#9;&#9;&#9;</pre>
+          <span>
+            React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
+            работу по вакансии junior-разработчик. Вы можете посмотреть мое
+            портфолио
+          </span>{" "}
+          <OutsideLink href={FIGMA_PORTFOLIO_URL}>здесь</OutsideLink> или
+          <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
+            {" "}
+            скачать в формате PDF.
+          </OutsideLink>
+          <br />
+          <br />
+          Ищу возможности получения реального опыта разработки, работы в
+          команде, полезного фидбека для улучшения своих навыков и получения
+          новых знаний. Быстро обучаем, люблю учиться.
+        </div>
+      </AnimationWrapper>
     </TextBlock>
   );
 };
@@ -150,7 +180,9 @@ const Projects: React.FC = () => {
     <TextBlock title="Проекты">
       <ul className="grid sm:grid-cols-2 gap-6 w-full">
         {projectsList.map((project) => (
-          <ProjectItem key={project.projectName} project={project} />
+          <AnimationWrapper key={project.projectName}>
+            <ProjectItem project={project} />
+          </AnimationWrapper>
         ))}
       </ul>
     </TextBlock>
