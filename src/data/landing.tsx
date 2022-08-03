@@ -52,13 +52,6 @@ export const projectsList: projectsListTypes = [
     image: "/projects/spotify_stats.png",
     stack: ["React", "SCSS"],
   },
-  // {
-  //   projectName: "Torrent",
-  //   href: "https://github.com/ilyasudakov/torrent_app",
-  //   description:
-  //     "Позволяет скачивать раздачи с помощью торрент файлов, узнать прогресс скачивания файлов (React + WebTorrent)",
-  //   image: "/projects/repo.md.png",
-  // },
   {
     projectName: "Ocean",
     href: "https://github.com/ilyasudakov/ThreeJS_test",
