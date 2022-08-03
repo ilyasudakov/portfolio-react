@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 import { bioPeriods, projectsList } from "../data/landing";
+
 import GithubIcon from "/public/svg/github.svg";
 import MailIcon from "/public/svg/mail.svg";
 import LinkedInIcon from "/public/svg/linkedin.svg";
-import { InView, useInView } from "react-intersection-observer";
 
 const FIGMA_PORTFOLIO_URL =
   process.env.FIGMA_PORTFOLIO_URL ??
@@ -19,7 +20,9 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-col text-justify mx-auto max-w-[70ch]">
       <Title />
-      <About />
+      <AnimationWrapper>
+        <About />
+      </AnimationWrapper>
       <Projects />
       <AnimationWrapper>
         <Bio />
@@ -55,22 +58,16 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-const TextBlock: React.FC<{
-  children: React.ReactNode;
-  title?: string;
-}> = ({ children, title }) => {
+const BlockTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="mb-14 flex flex-col text-stone-300">
-      <>
-        {title ? (
-          <div className="text-xl font-bold text-stone-50 mb-2 border-b-4 border-stone-500 w-fit">
-            {title}
-          </div>
-        ) : null}
-        {children}
-      </>
+    <div className="text-xl font-bold text-stone-50 mb-2 border-b-4 border-stone-500 w-fit">
+      {children}
     </div>
   );
+};
+
+const TextBlock: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className="mb-14 flex flex-col text-stone-300">{children}</div>;
 };
 
 const OutsideLink: React.FC<{
@@ -150,34 +147,36 @@ const Title: React.FC = () => {
 
 const About: React.FC = () => {
   return (
-    <TextBlock title="Обо мне">
-      <AnimationWrapper>
-        <div>
-          <pre className="w-fit inline">&#9;&#9;&#9;</pre>
-          <span>
-            React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
-            работу по вакансии junior-разработчик. Вы можете посмотреть мое
-            портфолио
-          </span>{" "}
-          <OutsideLink href={FIGMA_PORTFOLIO_URL}>здесь</OutsideLink> или
-          <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
-            {" "}
-            скачать в формате PDF.
-          </OutsideLink>
-          <br />
-          <br />
-          Ищу возможности получения реального опыта разработки, работы в
-          команде, полезного фидбека для улучшения своих навыков и получения
-          новых знаний. Быстро обучаем, люблю учиться.
-        </div>
-      </AnimationWrapper>
+    <TextBlock>
+      <BlockTitle>Обо мне</BlockTitle>
+      <div>
+        <pre className="w-fit inline">&#9;&#9;&#9;</pre>
+        <span>
+          React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
+          работу по вакансии junior-разработчик. Вы можете посмотреть мое
+          портфолио
+        </span>{" "}
+        <OutsideLink href={FIGMA_PORTFOLIO_URL}>здесь</OutsideLink> или
+        <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
+          {" "}
+          скачать в формате PDF.
+        </OutsideLink>
+        <br />
+        <br />
+        Ищу возможности получения реального опыта разработки, работы в команде,
+        полезного фидбека для улучшения своих навыков и получения новых знаний.
+        Быстро обучаем, люблю учиться.
+      </div>
     </TextBlock>
   );
 };
 
 const Projects: React.FC = () => {
   return (
-    <TextBlock title="Проекты">
+    <TextBlock>
+      <AnimationWrapper>
+        <BlockTitle>Проекты</BlockTitle>
+      </AnimationWrapper>
       <ul className="grid sm:grid-cols-2 gap-6 w-full">
         {projectsList.map((project) => (
           <AnimationWrapper key={project.projectName}>
@@ -231,27 +230,10 @@ const ProjectItem: React.FC<{
   );
 };
 
-const Education: React.FC = () => {
-  return (
-    <TextBlock title="Образование">
-      <ul>
-        <li>
-          <span className="font-bold text-stone-100">
-            Программная инженерия
-          </span>
-          <span className="ml-[2rem]">
-            Санкт-Петербургский Государственный Университет Телекоммуникаций им.
-            М.А. Бонч-Бруевича. Бакалавр (2016 — 2020)
-          </span>
-        </li>
-      </ul>
-    </TextBlock>
-  );
-};
-
 const Bio: React.FC = () => {
   return (
-    <TextBlock title="Биография">
+    <TextBlock>
+      <BlockTitle>Биография</BlockTitle>
       <ul className="flex flex-col gap-4">
         {bioPeriods.map(({ period, description }) => (
           <li key={description}>
