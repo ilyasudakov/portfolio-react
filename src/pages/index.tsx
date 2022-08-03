@@ -134,7 +134,6 @@ const Title: React.FC = () => {
         <div className="flex self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
           <Image
             src="/headshot.jpg"
-            className="max-w-full"
             width="100px"
             height="100px"
             alt="Profile image"
@@ -179,9 +178,11 @@ const Projects: React.FC = () => {
       </AnimationWrapper>
       <ul className="grid sm:grid-cols-2 gap-6 w-full">
         {projectsList.map((project) => (
-          <AnimationWrapper key={project.projectName}>
-            <ProjectItem project={project} />
-          </AnimationWrapper>
+          <li key={project.projectName}>
+            <AnimationWrapper>
+              <ProjectItem project={project} />
+            </AnimationWrapper>
+          </li>
         ))}
       </ul>
     </TextBlock>
@@ -199,34 +200,30 @@ const ProjectItem: React.FC<{
 }> = ({ project }) => {
   const { projectName, href, description, image, stack } = project;
   return (
-    <li>
-      <a href={href} target="_blank" rel="noreferrer noopener">
-        <div className="relative aspect-video rounded-lg">
-          <Image
-            layout="fill"
-            src={image}
-            className="rounded-lg"
-            objectFit="cover"
-            alt={`${projectName} image`}
-          ></Image>
-        </div>
-        <div className="px-4 py-2">
-          <div className="text-lg text-center text-stone-100">
-            {projectName}
+    <a href={href} target="_blank" rel="noreferrer noopener">
+      <div className="relative mx-auto max-w-[100%] aspect-video [&_span]:rounded-lg">
+        <Image
+          layout="fill"
+          src={image}
+          className="transition duration-500 hover:scale-[1.05]"
+          objectFit="cover"
+          alt={`${projectName} image`}
+        />
+      </div>
+      <div className="px-4 py-2">
+        <div className="text-lg text-center text-stone-100">{projectName}</div>
+        <div className="text-sm">{description}</div>
+        {stack ? (
+          <div className="text-sm flex px-3 py-1 w-fit mx-auto flex-wrap items-center justify-center">
+            {stack.map((tool) => (
+              <div key={tool} className="px-1  text-stone-500">
+                {tool}
+              </div>
+            ))}
           </div>
-          <div className="text-sm">{description}</div>
-          {stack ? (
-            <div className="text-sm flex px-3 py-1 w-fit mx-auto flex-wrap items-center justify-center">
-              {stack.map((tool) => (
-                <div key={tool} className="px-1  text-stone-500">
-                  {tool}
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      </a>
-    </li>
+        ) : null}
+      </div>
+    </a>
   );
 };
 
