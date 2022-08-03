@@ -134,8 +134,8 @@ const Title: React.FC = () => {
         <div className="flex self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
           <Image
             src="/headshot.jpg"
-            width="100px"
-            height="100px"
+            width={100}
+            height={100}
             alt="Profile image"
           />
         </div>
@@ -149,12 +149,11 @@ const About: React.FC = () => {
     <TextBlock>
       <BlockTitle>Обо мне</BlockTitle>
       <div>
-        <pre className="w-fit inline">&#9;&#9;&#9;</pre>
-        <span>
+        <div className="indent-6">
           React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
           работу по вакансии junior-разработчик. Вы можете посмотреть мое
           портфолио
-        </span>{" "}
+        </div>{" "}
         <OutsideLink href={FIGMA_PORTFOLIO_URL}>здесь</OutsideLink> или
         <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
           {" "}
