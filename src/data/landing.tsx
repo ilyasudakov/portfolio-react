@@ -92,3 +92,27 @@ export const bioPeriods = [
     description: "Служба по призыву",
   },
 ];
+
+export const skillsList = [
+  {
+    setName: "Фронтенд",
+    skills: [
+      "React",
+      "NextJS",
+      "NextAuth",
+      "TypeScript",
+      "TailwindCSS",
+      "CSS/SCSS",
+      "HTML",
+      "Работа с API",
+    ],
+  },
+  {
+    setName: "Инструменты",
+    skills: ["Git", "GitHub", "Github Actions", "Figma"],
+  },
+  {
+    setName: "Языки",
+    skills: ["Русский - родной", "Английский - B1"],
+  },
+];

@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-import { bioPeriods, projectsList } from "../data/landing";
+import { bioPeriods, projectsList, skillsList } from "../data/landing";
 
 import GithubIcon from "/public/svg/github.svg";
 import MailIcon from "/public/svg/mail.svg";
@@ -25,6 +25,9 @@ const Home: NextPage = () => {
       <Projects />
       <AnimationWrapper>
         <Bio />
+      </AnimationWrapper>
+      <AnimationWrapper>
+        <SkillSet />
       </AnimationWrapper>
       <Copyright />
     </div>
@@ -237,6 +240,53 @@ const Bio: React.FC = () => {
               <div className="text-left">{description}</div>
             </div>
           </li>
+        ))}
+      </ul>
+    </TextBlock>
+  );
+};
+
+const SkillItem: React.FC<{ skill: string }> = ({ skill }) => {
+  return (
+    <div
+      className="rounded border border-stone-400 px-4 py-1 text-sm cursor-pointer 
+    transition hover:bg-stone-700"
+    >
+      {skill}
+    </div>
+  );
+};
+
+const SkillListItem: React.FC<{
+  skillSetItem: { setName: string; skills: string[] };
+}> = ({ skillSetItem }) => {
+  const { setName, skills } = skillSetItem;
+  return (
+    <li>
+      <div className="flex flex-col sm:flex-row">
+        <div className="font-bold text-stone-100 text-left w-full mb-1 sm:mb-0 sm:max-w-[20ch]">
+          {setName}
+        </div>
+        <div className="text-left flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <SkillItem key={skill} skill={skill} />
+          ))}
+        </div>
+      </div>
+    </li>
+  );
+};
+
+const SkillSet: React.FC = () => {
+  return (
+    <TextBlock>
+      <BlockTitle>Навыки</BlockTitle>
+      <ul className="flex flex-col gap-1 sm:gap-4">
+        {skillsList.map((skillSetItem) => (
+          <SkillListItem
+            skillSetItem={skillSetItem}
+            key={skillSetItem.setName}
+          />
         ))}
       </ul>
     </TextBlock>
