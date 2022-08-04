@@ -13,7 +13,7 @@ const GOOGLE_DRIVE_CV_PDF_URL =
   "https://drive.google.com/file/d/1diMfqmYiNQolebKW7Os1EE6KuwW7zfw2/view?usp=sharing";
 const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
   process.env.GOOGLE_DRIVE_PORTFOLIO_PDF_URL ??
-  "https://drive.google.com/file/d/1ONZx1O9ax6Omrt9rMSWZNFjkKB6sl6fC/view?usp=sharing";
+  "https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing";
 
 const Home: NextPage = () => {
   return (
