@@ -8,9 +8,9 @@ import { bioPeriods, projectsList } from "../data/landing";
 import GithubIcon from "/public/svg/github.svg";
 import MailIcon from "/public/svg/mail.svg";
 import LinkedInIcon from "/public/svg/linkedin.svg";
-const FIGMA_PORTFOLIO_URL =
-  process.env.FIGMA_PORTFOLIO_URL ??
-  "https://www.figma.com/proto/N9A228oZBWtkEzGehdigGe/%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE?node-id=1%3A10&scaling=contain&page-id=0%3A1&starting-point-node-id=1%3A10";
+const GOOGLE_DRIVE_CV_PDF_URL =
+  process.env.GOOGLE_DRIVE_CV_PDF_URL ??
+  "https://drive.google.com/file/d/1diMfqmYiNQolebKW7Os1EE6KuwW7zfw2/view?usp=sharing";
 const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
   process.env.GOOGLE_DRIVE_PORTFOLIO_PDF_URL ??
   "https://drive.google.com/file/d/1ONZx1O9ax6Omrt9rMSWZNFjkKB6sl6fC/view?usp=sharing";
@@ -151,12 +151,11 @@ const About: React.FC = () => {
         <div className="indent-6">
           React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
           работу по вакансии junior-разработчик. Вы можете посмотреть{" "}
-          <OutsideLink href={FIGMA_PORTFOLIO_URL}>мое портфолио</OutsideLink>{" "}
-          или
           <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
-            {" "}
-            скачать в формате PDF.
-          </OutsideLink>
+            мое портфолио
+          </OutsideLink>{" "}
+          или
+          <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}> скачать CV.</OutsideLink>
         </div>
         <br />
         Ищу возможности получения реального опыта разработки, работы в команде,
