@@ -8,7 +8,6 @@ import { bioPeriods, projectsList } from "../data/landing";
 import GithubIcon from "/public/svg/github.svg";
 import MailIcon from "/public/svg/mail.svg";
 import LinkedInIcon from "/public/svg/linkedin.svg";
-
 const FIGMA_PORTFOLIO_URL =
   process.env.FIGMA_PORTFOLIO_URL ??
   "https://www.figma.com/proto/N9A228oZBWtkEzGehdigGe/%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE?node-id=1%3A10&scaling=contain&page-id=0%3A1&starting-point-node-id=1%3A10";
@@ -96,7 +95,7 @@ const ContactButton: React.FC<{
       target="_blank"
       rel="noreferrer noopener"
       className="rounded px-4 py-1 flex justify-center items-center w-fit gap-1
-      bg-[#E8AEF0] text-stone-900"
+      transition bg-[#E8AEF0] text-stone-900 hover:bg-[#ffb8fe]"
     >
       {children}
     </a>
@@ -215,7 +214,7 @@ const ProjectItem: React.FC<{
         {stack ? (
           <div className="text-sm flex px-3 py-1 w-fit mx-auto flex-wrap items-center justify-center">
             {stack.map((tool) => (
-              <div key={tool} className="px-1  text-stone-500">
+              <div key={tool} className="px-1 text-stone-500">
                 {tool}
               </div>
             ))}

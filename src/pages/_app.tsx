@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="favicon" href="favicon.ico" />
         <title>@ilyasudakov</title>
       </Head>
-      <div className="container mx-auto px-4 lg:px-[10%] pt-6 sm:pt-[10vh] pb-8 overflow-x-hidden">
+      <div className="container mx-auto px-4 lg:px-[10%] pt-6 sm:pt-[8vh] pb-8 overflow-x-hidden">
         <Component {...pageProps} />
       </div>
     </>
