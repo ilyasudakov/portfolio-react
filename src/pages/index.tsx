@@ -109,11 +109,11 @@ const ContactsList = () => {
         <GithubIcon width="15px" height="15px" />
         Github
       </ContactButton>
-      <ContactButton href="https://github.com/ilyasudakov">
+      <ContactButton href="mailto:ilyasudakov.dev@gmail.com">
         <MailIcon width="20px" height="20px" />
         Почта
       </ContactButton>
-      <ContactButton href="https://github.com/ilyasudakov">
+      <ContactButton href="https://www.linkedin.com/in/ilya-sudakov/">
         <LinkedInIcon width="15px" height="15px" />
         LinkedIn
       </ContactButton>
@@ -150,15 +150,14 @@ const About: React.FC = () => {
       <div>
         <div className="indent-6">
           React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
-          работу по вакансии junior-разработчик. Вы можете посмотреть мое
-          портфолио
-        </div>{" "}
-        <OutsideLink href={FIGMA_PORTFOLIO_URL}>здесь</OutsideLink> или
-        <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
-          {" "}
-          скачать в формате PDF.
-        </OutsideLink>
-        <br />
+          работу по вакансии junior-разработчик. Вы можете посмотреть{" "}
+          <OutsideLink href={FIGMA_PORTFOLIO_URL}>мое портфолио</OutsideLink>{" "}
+          или
+          <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
+            {" "}
+            скачать в формате PDF.
+          </OutsideLink>
+        </div>
         <br />
         Ищу возможности получения реального опыта разработки, работы в команде,
         полезного фидбека для улучшения своих навыков и получения новых знаний.
