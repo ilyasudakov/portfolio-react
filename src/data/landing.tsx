@@ -105,11 +105,13 @@ export const skillsList = [
       "CSS/SCSS",
       "HTML",
       "Работа с API",
+      "Context API",
+      "Webpack",
     ],
   },
   {
     setName: "Инструменты",
-    skills: ["Git", "GitHub", "Github Actions", "Figma"],
+    skills: ["Git", "GitHub", "Github Actions", "Figma", "Trello"],
   },
   {
     setName: "Языки",
