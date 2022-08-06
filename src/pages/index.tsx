@@ -8,6 +8,8 @@ import { bioPeriods, projectsList, skillsList } from "../data/landing";
 import GithubIcon from "/public/svg/github.svg";
 import MailIcon from "/public/svg/mail.svg";
 import LinkedInIcon from "/public/svg/linkedin.svg";
+import HeadshotImg from "/public/headshot.jpg";
+
 const GOOGLE_DRIVE_CV_PDF_URL =
   process.env.GOOGLE_DRIVE_CV_PDF_URL ??
   "https://drive.google.com/file/d/1diMfqmYiNQolebKW7Os1EE6KuwW7zfw2/view?usp=sharing";
@@ -133,13 +135,8 @@ const Title: React.FC = () => {
           <div>React-разработчик</div>
           <ContactsList />
         </div>
-        <div className="flex self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
-          <Image
-            src="/headshot.jpg"
-            width={100}
-            height={100}
-            alt="Profile image"
-          />
+        <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
+          <Image src={HeadshotImg} alt="Profile image" />
         </div>
       </div>
     </TextBlock>

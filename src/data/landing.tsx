@@ -1,3 +1,5 @@
+import React from "react";
+
 type projectsListTypes = {
   projectName: string;
   href: string;
@@ -67,7 +69,9 @@ const SmallTextPeriod: React.FC<{ children: React.ReactNode }> = ({
   return <span className="font-normal text-stone-300 text-sm">{children}</span>;
 };
 
-export const bioPeriods = [
+type bioPeriodsTypes = { period: React.ReactNode; description: string }[];
+
+export const bioPeriods: bioPeriodsTypes = [
   {
     period: <span>2016 — 2020</span>,
     description:
@@ -93,7 +97,9 @@ export const bioPeriods = [
   },
 ];
 
-export const skillsList = [
+type skillsListType = { setName: string; skills: string[] }[];
+
+export const skillsList: skillsListType = [
   {
     setName: "Фронтенд",
     skills: [
