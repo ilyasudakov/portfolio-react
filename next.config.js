@@ -7,20 +7,24 @@ const nextConfig = {
       allowFutureImage: true,
     },
   },
+  i18n: {
+    locales: ['ru'],
+    defaultLocale: 'ru',
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: { and: [/\.(js|ts|md)x?$/] },
       use: [
         {
-          loader: "@svgr/webpack",
+          loader: '@svgr/webpack',
           options: {
             prettier: false,
             svgo: true,
             svgoConfig: {
               plugins: [
                 {
-                  name: "preset-default",
+                  name: 'preset-default',
                   params: {
                     overrides: { removeViewBox: false },
                   },

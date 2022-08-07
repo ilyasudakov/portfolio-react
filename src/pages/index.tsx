@@ -1,38 +1,42 @@
-import type { NextPage } from "next";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-import { bioPeriods, projectsList, skillsList } from "../data/landing";
+import { bioPeriods, projectsList, skillsList } from '../data/landing';
+import Meta from '../components/Meta';
 
-import GithubIcon from "/public/svg/github.svg";
-import MailIcon from "/public/svg/mail.svg";
-import LinkedInIcon from "/public/svg/linkedin.svg";
-import HeadshotImg from "/public/headshot.jpg";
+import GithubIcon from '/public/svg/github.svg';
+import MailIcon from '/public/svg/mail.svg';
+import LinkedInIcon from '/public/svg/linkedin.svg';
+import HeadshotImg from '/public/headshot.jpg';
 
 const GOOGLE_DRIVE_CV_PDF_URL =
   process.env.GOOGLE_DRIVE_CV_PDF_URL ??
-  "https://drive.google.com/file/d/1diMfqmYiNQolebKW7Os1EE6KuwW7zfw2/view?usp=sharing";
+  'https://drive.google.com/file/d/1diMfqmYiNQolebKW7Os1EE6KuwW7zfw2/view?usp=sharing';
 const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
   process.env.GOOGLE_DRIVE_PORTFOLIO_PDF_URL ??
-  "https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing";
+  'https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing';
 
 const Home: NextPage = () => {
   return (
-    <div className="flex flex-col text-justify mx-auto max-w-[70ch]">
-      <Title />
-      <AnimationWrapper>
-        <About />
-      </AnimationWrapper>
-      <Projects />
-      <AnimationWrapper>
-        <Bio />
-      </AnimationWrapper>
-      <AnimationWrapper>
-        <SkillSet />
-      </AnimationWrapper>
-      <Copyright />
-    </div>
+    <>
+      <Meta />
+      <div className="flex flex-col text-justify mx-auto max-w-[70ch]">
+        <Title />
+        <AnimationWrapper>
+          <About />
+        </AnimationWrapper>
+        <Projects />
+        <AnimationWrapper>
+          <Bio />
+        </AnimationWrapper>
+        <AnimationWrapper>
+          <SkillSet />
+        </AnimationWrapper>
+        <Copyright />
+      </div>
+    </>
   );
 };
 export default Home;
@@ -53,8 +57,8 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
       ref={ref}
       className={`transition duration-1000 ${
         inView || wasInView
-          ? "opacity-100 translate-x-0"
-          : "opacity-0 translate-x-20"
+          ? 'opacity-100 translate-x-0'
+          : 'opacity-0 translate-x-20'
       }`}
     >
       {children}
@@ -150,10 +154,10 @@ const About: React.FC = () => {
       <div>
         <div className="indent-6">
           React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
-          работу по вакансии junior-разработчик. Вы можете посмотреть{" "}
+          работу по вакансии junior-разработчик. Вы можете посмотреть{' '}
           <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
             мое портфолио
-          </OutsideLink>{" "}
+          </OutsideLink>{' '}
           или
           <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}> скачать CV.</OutsideLink>
         </div>
@@ -212,7 +216,7 @@ const ProjectItem: React.FC<{
         {stack ? (
           <div className="text-sm flex px-3 py-1 w-fit mx-auto flex-wrap items-center justify-center">
             {stack.map((tool) => (
-              <div key={tool} className="px-1 text-stone-500">
+              <div key={tool} className="px-1 text-stone-400">
                 {tool}
               </div>
             ))}
@@ -292,7 +296,7 @@ const SkillSet: React.FC = () => {
 
 const Copyright: React.FC = () => {
   return (
-    <div className="text-center text-sm text-stone-500">
+    <div className="text-center text-sm text-stone-400">
       <div>© 2022 Илья Судаков.</div>
       <div>Сделано с NextJS, TypeScript, Tailwind.</div>
     </div>
