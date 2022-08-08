@@ -101,7 +101,7 @@ const OutsideLink: React.FC<{
 
 const TitleLinks = () => {
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-wrap gap-4">
       <OutsideLink href="https://github.com/ilyasudakov" className="border-b-2">
         <div className="flex items-center gap-2">
           <GithubIcon className="fill-fuchsia-400" width="16px" height="16px" />
