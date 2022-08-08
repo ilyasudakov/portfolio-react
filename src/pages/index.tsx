@@ -34,6 +34,9 @@ const Home: NextPage = () => {
         <AnimationWrapper>
           <SkillSet />
         </AnimationWrapper>
+        <AnimationWrapper>
+          <Contacts />
+        </AnimationWrapper>
         <Copyright />
       </div>
     </>
@@ -81,10 +84,11 @@ const TextBlock: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const OutsideLink: React.FC<{
   children: React.ReactNode;
   href: string;
-}> = ({ children, href }) => {
+  className?: string;
+}> = ({ children, href, className = '' }) => {
   return (
     <a
-      className="text-fuchsia-400 inline w-fit border-b border-fuchsia-400"
+      className={`text-fuchsia-400 inline w-fit border-b border-fuchsia-400 ${className}`}
       target="_blank"
       rel="noreferrer noopener"
       href={href}
@@ -94,39 +98,14 @@ const OutsideLink: React.FC<{
   );
 };
 
-const ContactButton: React.FC<{
-  href: string;
-  children: React.ReactNode;
-}> = ({ href, children }) => {
+const TitleLinks = () => {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      className="rounded px-4 py-1 flex justify-center items-center w-fit gap-1
-      transition bg-[#E8AEF0] text-stone-900 hover:bg-[#ffb8fe]"
-    >
-      {children}
-    </a>
-  );
-};
-
-const ContactsList = () => {
-  return (
-    <div className="flex gap-2 flex-wrap">
-      <ContactButton href="https://github.com/ilyasudakov">
-        <GithubIcon width="15px" height="15px" />
-        Github
-      </ContactButton>
-      <ContactButton href="mailto:ilyasudakov.dev@gmail.com">
-        <MailIcon width="20px" height="20px" />
-        Почта
-      </ContactButton>
-      <ContactButton href="https://www.linkedin.com/in/ilya-sudakov/">
-        <LinkedInIcon width="15px" height="15px" />
-        LinkedIn
-      </ContactButton>
-    </div>
+    <OutsideLink href="https://github.com/ilyasudakov" className="border-b-2">
+      <div className="flex items-center gap-2">
+        <GithubIcon className="fill-fuchsia-400" width="16px" height="16px" />
+        @ilyasudakov
+      </div>
+    </OutsideLink>
   );
 };
 
@@ -137,7 +116,7 @@ const Title: React.FC = () => {
         <div className="flex flex-col gap-2">
           <div className="text-3xl font-bold text-stone-50">Илья Судаков</div>
           <div>React-разработчик</div>
-          <ContactsList />
+          <TitleLinks />
         </div>
         <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
           <Image src={HeadshotImg} alt="Profile image" />
@@ -291,6 +270,49 @@ const SkillSet: React.FC = () => {
           />
         ))}
       </ul>
+    </TextBlock>
+  );
+};
+
+const Contacts = () => {
+  const links = [
+    {
+      href: 'https://github.com/ilyasudakov',
+      icon: { size: '16px', Component: GithubIcon },
+      text: '@ilyasudakov',
+    },
+    {
+      href: 'mailto:ilyasudakov.dev@gmail.com',
+      icon: { size: '20px', Component: MailIcon },
+      text: 'ilyasudakov.dev@gmail.com',
+    },
+    {
+      href: 'https://www.linkedin.com/in/ilya-sudakov/',
+      icon: { size: '16px', Component: LinkedInIcon },
+      text: '@ilya-sudakov',
+    },
+  ];
+
+  return (
+    <TextBlock>
+      <BlockTitle>Контакты</BlockTitle>
+      <div className="flex flex-col gap-2">
+        {links.map(({ href, text, icon }) => {
+          const SVGElement = icon.Component;
+          return (
+            <OutsideLink className="border-b-2" href={href}>
+              <div className="flex gap-2 items-center">
+                <SVGElement
+                  width={icon.size}
+                  height={icon.size}
+                  className="fill-fuchsia-400 w-5"
+                />
+                {text}
+              </div>
+            </OutsideLink>
+          );
+        })}
+      </div>
     </TextBlock>
   );
 };
