@@ -9,6 +9,7 @@ import Meta from '../components/Meta';
 import GithubIcon from '/public/svg/github.svg';
 import MailIcon from '/public/svg/mail.svg';
 import LinkedInIcon from '/public/svg/linkedin.svg';
+import TelegramIcon from '/public/svg/telegram.svg';
 import HeadshotImg from '/public/headshot.jpg';
 
 const GOOGLE_DRIVE_CV_PDF_URL =
@@ -290,6 +291,11 @@ const Contacts = () => {
       href: 'https://www.linkedin.com/in/ilya-sudakov/',
       icon: { size: '16px', Component: LinkedInIcon },
       text: '@ilya-sudakov',
+    },
+    {
+      href: 'https://t.me/ilyasudakov',
+      icon: { size: '16px', Component: TelegramIcon },
+      text: '@ilyasudakov',
     },
   ];
 
