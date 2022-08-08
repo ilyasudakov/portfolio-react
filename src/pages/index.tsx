@@ -300,7 +300,7 @@ const Contacts = () => {
         {links.map(({ href, text, icon }) => {
           const SVGElement = icon.Component;
           return (
-            <OutsideLink className="border-b-2" href={href}>
+            <OutsideLink className="border-b-2" key={href} href={href}>
               <div className="flex gap-2 items-center">
                 <SVGElement
                   width={icon.size}
