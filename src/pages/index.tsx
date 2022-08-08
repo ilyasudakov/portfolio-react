@@ -13,10 +13,10 @@ import TelegramIcon from '/public/svg/telegram.svg';
 import HeadshotImg from '/public/headshot.jpg';
 
 const GOOGLE_DRIVE_CV_PDF_URL =
-  process.env.GOOGLE_DRIVE_CV_PDF_URL ??
+  process.env.NEXT_PUBLIC_GOOGLE_DRIVE_CV_PDF_URL ??
   'https://drive.google.com/file/d/1diMfqmYiNQolebKW7Os1EE6KuwW7zfw2/view?usp=sharing';
 const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
-  process.env.GOOGLE_DRIVE_PORTFOLIO_PDF_URL ??
+  process.env.NEXT_PUBLIC_GOOGLE_DRIVE_PORTFOLIO_PDF_URL ??
   'https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing';
 
 const Home: NextPage = () => {
