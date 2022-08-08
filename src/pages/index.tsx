@@ -101,12 +101,24 @@ const OutsideLink: React.FC<{
 
 const TitleLinks = () => {
   return (
-    <OutsideLink href="https://github.com/ilyasudakov" className="border-b-2">
-      <div className="flex items-center gap-2">
-        <GithubIcon className="fill-fuchsia-400" width="16px" height="16px" />
-        @ilyasudakov
-      </div>
-    </OutsideLink>
+    <div className="flex gap-4">
+      <OutsideLink href="https://github.com/ilyasudakov" className="border-b-2">
+        <div className="flex items-center gap-2">
+          <GithubIcon className="fill-fuchsia-400" width="16px" height="16px" />
+          @ilyasudakov
+        </div>
+      </OutsideLink>
+      <OutsideLink href="https://t.me/ilyasudakov" className="border-b-2">
+        <div className="flex items-center gap-2">
+          <TelegramIcon
+            className="fill-fuchsia-400"
+            width="16px"
+            height="16px"
+          />
+          @ilyasudakov
+        </div>
+      </OutsideLink>
+    </div>
   );
 };
 
