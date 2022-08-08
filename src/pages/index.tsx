@@ -127,8 +127,8 @@ const Title: React.FC = () => {
     <TextBlock>
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <div className="flex flex-col gap-2">
-          <div className="text-3xl font-bold text-stone-50">Илья Судаков</div>
-          <div>React-разработчик</div>
+          <h1 className="text-3xl font-bold text-stone-50">Илья Судаков</h1>
+          <h2>React-разработчик</h2>
           <TitleLinks />
         </div>
         <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
