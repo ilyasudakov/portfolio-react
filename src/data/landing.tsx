@@ -6,6 +6,7 @@ type projectsListTypes = {
   description: string;
   image: string;
   stack?: string[];
+  position: number;
 }[];
 
 export const projectsList: projectsListTypes = [
@@ -15,6 +16,7 @@ export const projectsList: projectsListTypes = [
     description: 'Фронтенд для системы управления малым предприятием',
     image: '/projects/osfix_crm.png',
     stack: ['React', 'SCSS', 'Jest', 'RTL'],
+    position: 1,
   },
   {
     projectName: 'repo.md',
@@ -22,6 +24,7 @@ export const projectsList: projectsListTypes = [
     description: 'Ваш Github репозиторий как Markdown блог',
     image: '/projects/repo_md.png',
     stack: ['NextJS', 'TS', 'NextAuth', 'TW', 'Jest', 'RTL'],
+    position: 2,
   },
   {
     projectName: 'CMS Блог',
@@ -30,6 +33,15 @@ export const projectsList: projectsListTypes = [
       'Блог с авторизацией, возможностью создавать собственные посты',
     image: '/projects/cms_blog.png',
     stack: ['NextJS', 'TS', 'NextAuth', 'TW'],
+    position: 3,
+  },
+  {
+    projectName: 'TechStack',
+    href: 'https://github.com/ilyasudakov/tech-stack',
+    description: 'Соберите свой стек из Github репозиториев',
+    image: '/projects/techstack.png',
+    stack: ['Redux-Toolkit', 'RTK Query', 'TS', 'TW'],
+    position: 4,
   },
   {
     projectName: 'react-base',
@@ -37,6 +49,7 @@ export const projectsList: projectsListTypes = [
     description: 'Простой шаблон для React-проектов',
     image: '/projects/react_base.png',
     stack: ['React', 'Webpack 5', 'SCSS', 'Jest/RTL'],
+    position: 5,
   },
   {
     projectName: 'Weather App',
@@ -45,6 +58,7 @@ export const projectsList: projectsListTypes = [
       'Приложение для просмотра погоды по геолокации пользователя, с возможностью просмотра прогноза на 7 дней',
     image: '/projects/weather_app.png',
     stack: ['React', 'SCSS'],
+    position: 6,
   },
   {
     projectName: 'Spotify Statistics',
@@ -53,6 +67,7 @@ export const projectsList: projectsListTypes = [
       'Приложение для просмотра любимых песен/исполнителей, а также получение списка рекомендаций в Spotify',
     image: '/projects/spotify_stats.png',
     stack: ['React', 'SCSS'],
+    position: 7,
   },
   {
     projectName: 'Ocean',
@@ -60,6 +75,7 @@ export const projectsList: projectsListTypes = [
     description: 'Простой эксперимент с использованием ThreeJS',
     image: '/projects/ocean_threejs.png',
     stack: ['React', 'React-Three-Fiber'],
+    position: 8,
   },
 ];
 
@@ -108,12 +124,15 @@ export const skillsList: skillsListType = [
       'JavaScript',
       'TypeScript',
       'NextJS',
+      'Redux Toolkit',
+      'RTK Query',
       'TailwindCSS',
       'NextAuth',
       'CSS/SCSS',
       'HTML',
       'Работа с API',
       'Webpack',
+      'Vite',
     ],
   },
   {

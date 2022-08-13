@@ -170,13 +170,15 @@ const Projects: React.FC = () => {
         <BlockTitle>Проекты</BlockTitle>
       </AnimationWrapper>
       <ul className="grid sm:grid-cols-2 gap-6 w-full">
-        {projectsList.map((project) => (
-          <li key={project.projectName}>
-            <AnimationWrapper>
-              <ProjectItem project={project} />
-            </AnimationWrapper>
-          </li>
-        ))}
+        {projectsList
+          .sort((a, b) => a.position - b.position)
+          .map((project) => (
+            <li key={project.projectName}>
+              <AnimationWrapper>
+                <ProjectItem project={project} />
+              </AnimationWrapper>
+            </li>
+          ))}
       </ul>
     </TextBlock>
   );
