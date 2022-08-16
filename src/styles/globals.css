@@ -3,7 +3,7 @@
 @import 'tailwindcss/utilities';
 
 html {
-  @apply bg-zinc-100;
+  @apply bg-violet-50;
 }
 
 html.dark {

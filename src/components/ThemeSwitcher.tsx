@@ -7,21 +7,31 @@ const THEMES = {
   DARK: 'dark',
   LIGHT: 'light',
 };
+
 const ICON_SIZE = 20;
 
+const isDarkModePersisted =
+  localStorage.theme === THEMES.DARK ||
+  (!('theme' in localStorage) &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches);
+
 const ThemeSwitcher: React.FC = () => {
-  const [selectedTheme, setSelectedTheme] = useState(THEMES.DARK);
+  const [selectedTheme, setSelectedTheme] = useState(
+    isDarkModePersisted ? THEMES.DARK : THEMES.LIGHT
+  );
 
   const changeToDarkTheme = () => {
     document.documentElement.classList.add(THEMES.DARK);
     localStorage.setItem('theme', THEMES.DARK);
     setSelectedTheme(THEMES.DARK);
   };
+
   const changeToLightTheme = () => {
     document.documentElement.classList.remove(THEMES.DARK);
     localStorage.setItem('theme', THEMES.LIGHT);
     setSelectedTheme(THEMES.LIGHT);
   };
+
   const changeTheme = () => {
     if (selectedTheme === THEMES.DARK) {
       return changeToLightTheme();
@@ -30,11 +40,7 @@ const ThemeSwitcher: React.FC = () => {
   };
 
   useEffect(() => {
-    if (
-      localStorage.theme === THEMES.DARK ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    if (isDarkModePersisted) {
       return changeToDarkTheme();
     }
     changeToLightTheme();

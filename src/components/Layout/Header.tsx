@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   return (
     <div
       className="flex px-4 sm:px-10 h-[60px] sticky top-0 z-10
-    bg-zinc-200/80 dark:bg-stone-700/80 backdrop-blur-sm"
+    bg-violet-100/80 dark:bg-stone-700/80 backdrop-blur-sm"
     >
       <div className="flex items-center justify-between container mx-auto max-w-[70ch]">
         <a
