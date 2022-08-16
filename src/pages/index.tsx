@@ -1,6 +1,7 @@
+import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 
 import { bioPeriods, projectsList, skillsList } from '../data/landing';
@@ -19,25 +20,22 @@ const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
   process.env.NEXT_PUBLIC_GOOGLE_DRIVE_PORTFOLIO_PDF_URL ??
   'https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing';
 
+const ThemeSwitcher = dynamic(() => import('../components/ThemeSwitcher'), {
+  ssr: false,
+});
+
 const Home: NextPage = () => {
   return (
     <>
       <Meta />
       <div className="flex flex-col text-justify mx-auto max-w-[70ch]">
+        <ThemeSwitcher />
         <Title />
-        <AnimationWrapper>
-          <About />
-        </AnimationWrapper>
+        <About />
         <Projects />
-        <AnimationWrapper>
-          <Bio />
-        </AnimationWrapper>
-        <AnimationWrapper>
-          <SkillSet />
-        </AnimationWrapper>
-        <AnimationWrapper>
-          <Contacts />
-        </AnimationWrapper>
+        <Bio />
+        <SkillSet />
+        <Contacts />
         <Copyright />
       </div>
     </>
@@ -72,7 +70,10 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
 
 const BlockTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="text-xl font-bold text-stone-50 mb-2 border-b-4 border-stone-500 w-fit">
+    <div
+      className="text-xl font-bold text-stone-600 dark:text-stone-50 
+      mb-2 border-b-4 dark:border-stone-500 w-fit"
+    >
       {children}
     </div>
   );
@@ -141,25 +142,30 @@ const Title: React.FC = () => {
 
 const About: React.FC = () => {
   return (
-    <TextBlock>
-      <BlockTitle>Обо мне</BlockTitle>
-      <div className="flex flex-col gap-4">
-        <div className="indent-6">
-          React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
-          работу по вакансии junior-разработчик. Вы можете посмотреть{' '}
-          <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
-            мое портфолио
-          </OutsideLink>{' '}
-          или
-          <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}> скачать CV.</OutsideLink>
+    <AnimationWrapper>
+      <TextBlock>
+        <BlockTitle>Обо мне</BlockTitle>
+        <div className="flex flex-col gap-4">
+          <div className="indent-6">
+            React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
+            работу по вакансии junior-разработчик. Вы можете посмотреть{' '}
+            <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
+              мое портфолио
+            </OutsideLink>{' '}
+            или
+            <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}>
+              {' '}
+              скачать CV.
+            </OutsideLink>
+          </div>
+          <div className="indent-6">
+            Ищу возможности получения реального опыта разработки, работы в
+            команде, полезного фидбека для улучшения своих навыков и получения
+            новых знаний. Быстро обучаем, люблю учиться.
+          </div>
         </div>
-        <div className="indent-6">
-          Ищу возможности получения реального опыта разработки, работы в
-          команде, полезного фидбека для улучшения своих навыков и получения
-          новых знаний. Быстро обучаем, люблю учиться.
-        </div>
-      </div>
-    </TextBlock>
+      </TextBlock>
+    </AnimationWrapper>
   );
 };
 
@@ -224,21 +230,23 @@ const ProjectItem: React.FC<{
 
 const Bio: React.FC = () => {
   return (
-    <TextBlock>
-      <BlockTitle>Биография</BlockTitle>
-      <ul className="flex flex-col gap-4">
-        {bioPeriods.map(({ period, description }) => (
-          <li key={description}>
-            <div className="flex flex-col sm:flex-row">
-              <div className="font-bold text-stone-100 text-left w-full sm:max-w-[20ch]">
-                {period}
+    <AnimationWrapper>
+      <TextBlock>
+        <BlockTitle>Биография</BlockTitle>
+        <ul className="flex flex-col gap-4">
+          {bioPeriods.map(({ period, description }) => (
+            <li key={description}>
+              <div className="flex flex-col sm:flex-row">
+                <div className="font-bold text-stone-100 text-left w-full sm:max-w-[20ch]">
+                  {period}
+                </div>
+                <div className="text-left">{description}</div>
               </div>
-              <div className="text-left">{description}</div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </TextBlock>
+            </li>
+          ))}
+        </ul>
+      </TextBlock>
+    </AnimationWrapper>
   );
 };
 
@@ -275,17 +283,19 @@ const SkillListItem: React.FC<{
 
 const SkillSet: React.FC = () => {
   return (
-    <TextBlock>
-      <BlockTitle>Навыки</BlockTitle>
-      <ul className="flex flex-col gap-1 sm:gap-4">
-        {skillsList.map((skillSetItem) => (
-          <SkillListItem
-            skillSetItem={skillSetItem}
-            key={skillSetItem.setName}
-          />
-        ))}
-      </ul>
-    </TextBlock>
+    <AnimationWrapper>
+      <TextBlock>
+        <BlockTitle>Навыки</BlockTitle>
+        <ul className="flex flex-col gap-1 sm:gap-4">
+          {skillsList.map((skillSetItem) => (
+            <SkillListItem
+              skillSetItem={skillSetItem}
+              key={skillSetItem.setName}
+            />
+          ))}
+        </ul>
+      </TextBlock>
+    </AnimationWrapper>
   );
 };
 
@@ -314,26 +324,28 @@ const Contacts = () => {
   ];
 
   return (
-    <TextBlock>
-      <BlockTitle>Контакты</BlockTitle>
-      <div className="flex flex-col gap-2">
-        {links.map(({ href, text, icon }) => {
-          const SVGElement = icon.Component;
-          return (
-            <OutsideLink className="border-b-2" key={href} href={href}>
-              <div className="flex gap-2 items-center">
-                <SVGElement
-                  width={icon.size}
-                  height={icon.size}
-                  className="fill-fuchsia-400 w-5"
-                />
-                {text}
-              </div>
-            </OutsideLink>
-          );
-        })}
-      </div>
-    </TextBlock>
+    <AnimationWrapper>
+      <TextBlock>
+        <BlockTitle>Контакты</BlockTitle>
+        <div className="flex flex-col gap-2">
+          {links.map(({ href, text, icon }) => {
+            const SVGElement = icon.Component;
+            return (
+              <OutsideLink className="border-b-2" key={href} href={href}>
+                <div className="flex gap-2 items-center">
+                  <SVGElement
+                    width={icon.size}
+                    height={icon.size}
+                    className="fill-fuchsia-400 w-5"
+                  />
+                  {text}
+                </div>
+              </OutsideLink>
+            );
+          })}
+        </div>
+      </TextBlock>
+    </AnimationWrapper>
   );
 };
 
