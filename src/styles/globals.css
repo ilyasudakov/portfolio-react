@@ -6,7 +6,7 @@ html {
   @apply bg-violet-50;
 }
 
-html.dark {
+html[data-theme='dark'] {
   background-color: #292929;
   color: #fff;
 }

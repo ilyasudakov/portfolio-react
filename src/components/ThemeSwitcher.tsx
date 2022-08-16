@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 import MoonIcon from '/public/svg/moon.svg';
 import SunIcon from '/public/svg/sun.svg';
@@ -20,31 +20,20 @@ const ThemeSwitcher: React.FC = () => {
     isDarkModePersisted ? THEMES.DARK : THEMES.LIGHT
   );
 
-  const changeToDarkTheme = () => {
-    document.documentElement.classList.add(THEMES.DARK);
-    localStorage.setItem('theme', THEMES.DARK);
-    setSelectedTheme(THEMES.DARK);
-  };
-
-  const changeToLightTheme = () => {
-    document.documentElement.classList.remove(THEMES.DARK);
-    localStorage.setItem('theme', THEMES.LIGHT);
-    setSelectedTheme(THEMES.LIGHT);
+  const changeToSelectedTheme = (theme: string) => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    setSelectedTheme(theme);
   };
 
   const changeTheme = () => {
     if (selectedTheme === THEMES.DARK) {
-      return changeToLightTheme();
+      return changeToSelectedTheme(THEMES.LIGHT);
     }
-    changeToDarkTheme();
+    changeToSelectedTheme(THEMES.DARK);
   };
 
-  useEffect(() => {
-    if (isDarkModePersisted) {
-      return changeToDarkTheme();
-    }
-    changeToLightTheme();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div
