@@ -9,21 +9,25 @@ const ThemeSwitcher = dynamic(() => import('../ThemeSwitcher'), {
 const Header: React.FC = () => {
   return (
     <div
-      className="flex items-center justify-between px-4 sm:px-10 h-[60px] sticky top-0 z-10
-    dark:bg-stone-700/80 backdrop-blur-sm"
+      className="flex px-4 sm:px-10 h-[60px] sticky top-0 z-10
+    bg-zinc-200/80 dark:bg-stone-700/80 backdrop-blur-sm"
     >
-      <a
-        className="flex items-center gap-2"
-        href="https://github.com/ilyasudakov/portfolio"
-      >
-        <GithubIcon
-          className="fill-stone-700 dark:fill-white"
-          width="16px"
-          height="16px"
-        />
-        Этот проект
-      </a>
-      <ThemeSwitcher />
+      <div className="flex items-center justify-between container mx-auto max-w-[70ch]">
+        <a
+          className="flex items-center gap-2 border-b-stone-600 dark:border-b-white hover:border-b"
+          href="https://github.com/ilyasudakov/portfolio"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <GithubIcon
+            className="fill-stone-700 dark:fill-white"
+            width="16px"
+            height="16px"
+          />
+          Исходный код
+        </a>
+        <ThemeSwitcher />
+      </div>
     </div>
   );
 };
