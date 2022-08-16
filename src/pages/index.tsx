@@ -71,7 +71,7 @@ const BlockTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div
       className="text-xl font-bold text-stone-700 dark:text-stone-50 
-      mb-2 border-b-4 border-stone-500 dark:border-stone-500 w-fit"
+      mb-2 border-b-4 border-stone-400 dark:border-stone-500 w-fit"
     >
       {children}
     </div>
@@ -142,7 +142,7 @@ const Title: React.FC = () => {
           <h2>React-разработчик</h2>
           <TitleLinks />
         </div>
-        <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-gray-900 dark:border-stone-200">
+        <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-gray-300 dark:border-stone-400">
           <Image src={HeadshotImg} alt="Profile image" />
         </div>
       </div>

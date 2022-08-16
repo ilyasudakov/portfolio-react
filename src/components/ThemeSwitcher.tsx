@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import MoonIcon from '/public/svg/moon.svg';
 import SunIcon from '/public/svg/sun.svg';
@@ -19,6 +19,8 @@ const ThemeSwitcher: React.FC = () => {
   const [selectedTheme, setSelectedTheme] = useState(
     isDarkModePersisted ? THEMES.DARK : THEMES.LIGHT
   );
+  const [hadFirstRender, setHadFirstRender] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   const changeToSelectedTheme = (theme: string) => {
     document.documentElement.dataset.theme = theme;
@@ -27,18 +29,30 @@ const ThemeSwitcher: React.FC = () => {
   };
 
   const changeTheme = () => {
+    if (!hadFirstRender) setHadFirstRender(true);
     if (selectedTheme === THEMES.DARK) {
       return changeToSelectedTheme(THEMES.LIGHT);
     }
     changeToSelectedTheme(THEMES.DARK);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!hadFirstRender) return;
+    const ANIMATION_CLASSNAME = 'scale-[1.2]';
+    ref.current?.classList.add(ANIMATION_CLASSNAME);
+    const timeout = setTimeout(() => {
+      ref.current?.classList.remove(ANIMATION_CLASSNAME);
+    }, 300);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [selectedTheme]);
 
   return (
     <div
       onClick={() => changeTheme()}
-      className="cursor-pointer rounded p-2 bg-fuchsia-300 dark:bg-stone-500"
+      ref={ref}
+      className="transition-all duration-500 cursor-pointer rounded p-2 bg-fuchsia-300 dark:bg-stone-500"
     >
       {selectedTheme === THEMES.DARK ? (
         <SunIcon width={ICON_SIZE} height={ICON_SIZE} />
