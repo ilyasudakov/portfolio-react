@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 
 import { bioPeriods, projectsList, skillsList } from '../data/landing';
@@ -12,6 +11,8 @@ import MailIcon from '/public/svg/mail.svg';
 import LinkedInIcon from '/public/svg/linkedin.svg';
 import TelegramIcon from '/public/svg/telegram.svg';
 import HeadshotImg from '/public/headshot.jpg';
+import Header from '../components/Layout/Header';
+import PageWrapper from '../components/Layout/PageWrapper';
 
 const GOOGLE_DRIVE_CV_PDF_URL =
   process.env.NEXT_PUBLIC_GOOGLE_DRIVE_CV_PDF_URL ??
@@ -20,24 +21,22 @@ const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
   process.env.NEXT_PUBLIC_GOOGLE_DRIVE_PORTFOLIO_PDF_URL ??
   'https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing';
 
-const ThemeSwitcher = dynamic(() => import('../components/ThemeSwitcher'), {
-  ssr: false,
-});
-
 const Home: NextPage = () => {
   return (
     <>
       <Meta />
-      <div className="flex flex-col text-justify mx-auto max-w-[70ch]">
-        <ThemeSwitcher />
-        <Title />
-        <About />
-        <Projects />
-        <Bio />
-        <SkillSet />
-        <Contacts />
-        <Copyright />
-      </div>
+      <Header />
+      <PageWrapper>
+        <div className="flex flex-col text-justify mx-auto max-w-[70ch]">
+          <Title />
+          <About />
+          <Projects />
+          <Bio />
+          <SkillSet />
+          <Contacts />
+          <Copyright />
+        </div>
+      </PageWrapper>
     </>
   );
 };
@@ -71,8 +70,8 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
 const BlockTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div
-      className="text-xl font-bold text-stone-600 dark:text-stone-50 
-      mb-2 border-b-4 dark:border-stone-500 w-fit"
+      className="text-xl font-bold text-stone-700 dark:text-stone-50 
+      mb-2 border-b-4 border-stone-500 dark:border-stone-500 w-fit"
     >
       {children}
     </div>
@@ -80,7 +79,11 @@ const BlockTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 const TextBlock: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <div className="mb-14 flex flex-col text-stone-300">{children}</div>;
+  return (
+    <div className="mb-14 flex flex-col text-stone-800 dark:text-stone-300">
+      {children}
+    </div>
+  );
 };
 
 const OutsideLink: React.FC<{
@@ -90,7 +93,8 @@ const OutsideLink: React.FC<{
 }> = ({ children, href, className = '' }) => {
   return (
     <a
-      className={`text-fuchsia-400 inline w-fit border-b border-fuchsia-400 ${className}`}
+      className={`text-fuchsia-600 dark:text-fuchsia-400 inline 
+      w-fit border-b border-fuchsia-600 dark:border-fuchsia-400 ${className}`}
       target="_blank"
       rel="noreferrer noopener"
       href={href}
@@ -105,7 +109,11 @@ const TitleLinks = () => {
     <div className="flex flex-wrap gap-4">
       <OutsideLink href="https://github.com/ilyasudakov" className="border-b-2">
         <div className="flex items-center gap-2">
-          <GithubIcon className="fill-fuchsia-400" width="16px" height="16px" />
+          <GithubIcon
+            className="fill-fuchsia-600 dark:fill-fuchsia-400"
+            width="16px"
+            height="16px"
+          />
           @ilyasudakov
         </div>
       </OutsideLink>
@@ -128,11 +136,13 @@ const Title: React.FC = () => {
     <TextBlock>
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold text-stone-50">Илья Судаков</h1>
+          <h1 className="text-3xl font-bold dark:text-stone-50">
+            Илья Судаков
+          </h1>
           <h2>React-разработчик</h2>
           <TitleLinks />
         </div>
-        <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-stone-200">
+        <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-gray-900 dark:border-stone-200">
           <Image src={HeadshotImg} alt="Profile image" />
         </div>
       </div>
@@ -212,12 +222,17 @@ const ProjectItem: React.FC<{
         />
       </div>
       <div className="px-4 py-2">
-        <div className="text-lg text-center text-stone-100">{projectName}</div>
+        <div className="text-lg text-center dark:text-stone-100">
+          {projectName}
+        </div>
         <div className="text-sm">{description}</div>
         {stack ? (
           <div className="text-sm flex px-3 py-1 w-fit mx-auto flex-wrap items-center justify-center">
             {stack.map((tool) => (
-              <div key={tool} className="px-1 text-stone-400">
+              <div
+                key={tool}
+                className="px-1 text-stone-500 dark:text-stone-400"
+              >
                 {tool}
               </div>
             ))}
@@ -237,7 +252,7 @@ const Bio: React.FC = () => {
           {bioPeriods.map(({ period, description }) => (
             <li key={description}>
               <div className="flex flex-col sm:flex-row">
-                <div className="font-bold text-stone-100 text-left w-full sm:max-w-[20ch]">
+                <div className="font-bold dark:text-stone-100 text-left w-full sm:max-w-[20ch]">
                   {period}
                 </div>
                 <div className="text-left">{description}</div>
@@ -254,7 +269,7 @@ const SkillItem: React.FC<{ skill: string }> = ({ skill }) => {
   return (
     <div
       className="rounded border border-stone-400 px-4 py-1 text-sm cursor-pointer 
-    transition hover:bg-stone-700"
+    transition hover:bg-stone-100 dark:hover:bg-stone-700"
     >
       {skill}
     </div>
@@ -268,7 +283,7 @@ const SkillListItem: React.FC<{
   return (
     <li>
       <div className="flex flex-col sm:flex-row">
-        <div className="font-bold text-stone-100 text-left w-full mb-1 sm:mb-0 sm:max-w-[20ch]">
+        <div className="font-bold dark:text-stone-100 text-left w-full mb-1 sm:mb-0 sm:max-w-[20ch]">
           {setName}
         </div>
         <div className="text-left flex flex-wrap gap-2">
@@ -336,7 +351,7 @@ const Contacts = () => {
                   <SVGElement
                     width={icon.size}
                     height={icon.size}
-                    className="fill-fuchsia-400 w-5"
+                    className="fill-fuchsia-600 dark:fill-fuchsia-400 w-5"
                   />
                   {text}
                 </div>
@@ -351,7 +366,7 @@ const Contacts = () => {
 
 const Copyright: React.FC = () => {
   return (
-    <div className="text-center text-sm text-stone-400">
+    <div className="text-center text-sm text-stone-500 dark:text-stone-400">
       <div>© 2022 Илья Судаков.</div>
       <div>Сделано с NextJS, TypeScript, Tailwind.</div>
     </div>

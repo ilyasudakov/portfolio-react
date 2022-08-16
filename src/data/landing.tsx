@@ -82,7 +82,11 @@ export const projectsList: projectsListTypes = [
 const SmallTextPeriod: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  return <span className="font-normal text-stone-300 text-sm">{children}</span>;
+  return (
+    <span className="font-normal text-stone-500 dark:text-stone-300 text-sm">
+      {children}
+    </span>
+  );
 };
 
 type bioPeriodsTypes = { period: React.ReactNode; description: string }[];
