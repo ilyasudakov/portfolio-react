@@ -9,12 +9,12 @@ const ThemeSwitcher = dynamic(() => import('../ThemeSwitcher'), {
 const Header: React.FC = () => {
   return (
     <div
-      className="flex px-4 sm:px-10 h-[60px] sticky top-0 z-10
-    bg-violet-100/80 dark:bg-stone-700/80 backdrop-blur-sm"
+      className="sticky top-0 z-10 flex h-[60px] bg-violet-100/80 px-4
+    backdrop-blur-sm dark:bg-stone-700/80 sm:px-10"
     >
-      <div className="flex items-center justify-between container mx-auto max-w-[70ch]">
+      <div className="container mx-auto flex max-w-[70ch] items-center justify-between">
         <a
-          className="flex items-center gap-2 border-b-stone-600 dark:border-b-white hover:border-b"
+          className="flex items-center gap-2 border-b-stone-600 hover:border-b dark:border-b-white"
           href="https://github.com/ilyasudakov/portfolio"
           target="_blank"
           rel="noreferrer noopener"

@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       <Meta />
       <Header />
       <PageWrapper>
-        <div className="flex flex-col text-justify mx-auto max-w-[70ch]">
+        <div className="mx-auto flex max-w-[70ch] flex-col text-justify">
           <Title />
           <About />
           <Projects />
@@ -58,8 +58,8 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
       ref={ref}
       className={`transition duration-1000 ${
         inView || wasInView
-          ? 'opacity-100 translate-x-0'
-          : 'opacity-0 translate-x-20'
+          ? 'translate-x-0 opacity-100'
+          : 'translate-x-20 opacity-0'
       }`}
     >
       {children}
@@ -70,8 +70,8 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
 const BlockTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div
-      className="text-xl font-bold text-stone-700 dark:text-stone-50 
-      mb-2 border-b-4 border-stone-400 dark:border-stone-500 w-fit"
+      className="mb-2 w-fit border-b-4 border-stone-400 
+      text-xl font-bold text-stone-700 dark:border-stone-500 dark:text-stone-50"
     >
       {children}
     </div>
@@ -93,8 +93,8 @@ const OutsideLink: React.FC<{
 }> = ({ children, href, className = '' }) => {
   return (
     <a
-      className={`text-fuchsia-600 dark:text-fuchsia-400 inline 
-      w-fit border-b border-fuchsia-600 dark:border-fuchsia-400 ${className}`}
+      className={`inline w-fit border-b 
+      border-fuchsia-600 text-fuchsia-600 dark:border-fuchsia-400 dark:text-fuchsia-400 ${className}`}
       target="_blank"
       rel="noreferrer noopener"
       href={href}
@@ -134,7 +134,7 @@ const TitleLinks = () => {
 const Title: React.FC = () => {
   return (
     <TextBlock>
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold dark:text-stone-50">
             Илья Судаков
@@ -142,7 +142,7 @@ const Title: React.FC = () => {
           <h2>React-разработчик</h2>
           <TitleLinks />
         </div>
-        <div className="flex w-[100px] self-end sm:self-center overflow-hidden rounded-full border-2 border-gray-300 dark:border-stone-400">
+        <div className="flex w-[100px] self-end overflow-hidden rounded-full border-2 border-gray-300 dark:border-stone-400 sm:self-center">
           <Image src={HeadshotImg} alt="Profile image" />
         </div>
       </div>
@@ -185,7 +185,7 @@ const Projects: React.FC = () => {
       <AnimationWrapper>
         <BlockTitle>Проекты</BlockTitle>
       </AnimationWrapper>
-      <ul className="grid sm:grid-cols-2 gap-6 w-full">
+      <ul className="grid w-full gap-6 sm:grid-cols-2">
         {projectsList
           .sort((a, b) => a.position - b.position)
           .map((project) => (
@@ -212,7 +212,7 @@ const ProjectItem: React.FC<{
   const { projectName, href, description, image, stack } = project;
   return (
     <a href={href} target="_blank" rel="noreferrer noopener">
-      <div className="relative mx-auto max-w-[100%] aspect-video [&_span]:rounded-lg">
+      <div className="relative mx-auto aspect-video max-w-[100%] [&_span]:rounded-lg">
         <Image
           layout="fill"
           src={image}
@@ -222,12 +222,12 @@ const ProjectItem: React.FC<{
         />
       </div>
       <div className="px-4 py-2">
-        <div className="text-lg text-center dark:text-stone-100">
+        <div className="text-center text-lg dark:text-stone-100">
           {projectName}
         </div>
         <div className="text-sm">{description}</div>
         {stack ? (
-          <div className="text-sm flex px-3 py-1 w-fit mx-auto flex-wrap items-center justify-center">
+          <div className="mx-auto flex w-fit flex-wrap items-center justify-center px-3 py-1 text-sm">
             {stack.map((tool) => (
               <div
                 key={tool}
@@ -252,7 +252,7 @@ const Bio: React.FC = () => {
           {bioPeriods.map(({ period, description }) => (
             <li key={description}>
               <div className="flex flex-col sm:flex-row">
-                <div className="font-bold dark:text-stone-100 text-left w-full sm:max-w-[20ch]">
+                <div className="w-full text-left font-bold dark:text-stone-100 sm:max-w-[20ch]">
                   {period}
                 </div>
                 <div className="text-left">{description}</div>
@@ -268,7 +268,7 @@ const Bio: React.FC = () => {
 const SkillItem: React.FC<{ skill: string }> = ({ skill }) => {
   return (
     <div
-      className="rounded border border-stone-400 px-4 py-1 text-sm cursor-pointer 
+      className="cursor-pointer rounded border border-stone-400 px-4 py-1 text-sm 
     transition hover:bg-stone-100 dark:hover:bg-stone-700"
     >
       {skill}
@@ -283,10 +283,10 @@ const SkillListItem: React.FC<{
   return (
     <li>
       <div className="flex flex-col sm:flex-row">
-        <div className="font-bold dark:text-stone-100 text-left w-full mb-1 sm:mb-0 sm:max-w-[20ch]">
+        <div className="mb-1 w-full text-left font-bold dark:text-stone-100 sm:mb-0 sm:max-w-[20ch]">
           {setName}
         </div>
-        <div className="text-left flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 text-left">
           {skills.map((skill) => (
             <SkillItem key={skill} skill={skill} />
           ))}
@@ -347,11 +347,11 @@ const Contacts = () => {
             const SVGElement = icon.Component;
             return (
               <OutsideLink className="border-b-2" key={href} href={href}>
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                   <SVGElement
                     width={icon.size}
                     height={icon.size}
-                    className="fill-fuchsia-600 dark:fill-fuchsia-400 w-5"
+                    className="w-5 fill-fuchsia-600 dark:fill-fuchsia-400"
                   />
                   {text}
                 </div>
