@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import MoonIcon from '/public/svg/moon.svg';
 import SunIcon from '/public/svg/sun.svg';
@@ -46,7 +46,7 @@ const ThemeSwitcher: React.FC = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [selectedTheme]);
+  }, [selectedTheme, hadFirstRender]);
 
   return (
     <div
