@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useInView } from 'react-intersection-observer';
 
 import { bioPeriods, projectsList, skillsList } from '../data/landing';
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
 export default Home;
 
 const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
-  children,
+  children
 }) => {
   const { ref, inView } = useInView();
   const [wasInView, setWasInView] = useState(false);
@@ -69,12 +69,14 @@ const AnimationWrapper: React.FC<{ children: React.ReactNode }> = ({
 
 const BlockTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div
-      className="mb-2 w-fit border-b-4 border-stone-400 
+    <AnimationWrapper>
+      <div
+        className="mb-2 w-fit border-b-4 border-stone-400 
       text-xl font-bold text-stone-700 dark:border-stone-500 dark:text-stone-50"
-    >
-      {children}
-    </div>
+      >
+        {children}
+      </div>
+    </AnimationWrapper>
   );
 };
 
@@ -152,39 +154,32 @@ const Title: React.FC = () => {
 
 const About: React.FC = () => {
   return (
-    <AnimationWrapper>
-      <TextBlock>
-        <BlockTitle>Обо мне</BlockTitle>
-        <div className="flex flex-col gap-4">
-          <div className="indent-6">
-            React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
-            работу по вакансии junior-разработчик. Вы можете посмотреть{' '}
-            <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
-              мое портфолио
-            </OutsideLink>{' '}
-            или
-            <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}>
-              {' '}
-              скачать CV.
-            </OutsideLink>
-          </div>
-          <div className="indent-6">
-            Ищу возможности получения реального опыта разработки, работы в
-            команде, полезного фидбека для улучшения своих навыков и получения
-            новых знаний. Быстро обучаем, люблю учиться.
-          </div>
+    <TextBlock>
+      <BlockTitle>Обо мне</BlockTitle>
+      <div className="flex flex-col gap-4">
+        <div className="indent-6">
+          React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
+          работу по вакансии junior-разработчик. Вы можете посмотреть{' '}
+          <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
+            мое портфолио
+          </OutsideLink>{' '}
+          или
+          <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}> скачать CV.</OutsideLink>
         </div>
-      </TextBlock>
-    </AnimationWrapper>
+        <div className="indent-6">
+          Ищу возможности получения реального опыта разработки, работы в
+          команде, полезного фидбека для улучшения своих навыков и получения
+          новых знаний. Быстро обучаем, люблю учиться.
+        </div>
+      </div>
+    </TextBlock>
   );
 };
 
 const Projects: React.FC = () => {
   return (
     <TextBlock>
-      <AnimationWrapper>
-        <BlockTitle>Проекты</BlockTitle>
-      </AnimationWrapper>
+      <BlockTitle>Проекты</BlockTitle>
       <ul className="grid w-full gap-6 sm:grid-cols-2">
         {projectsList
           .sort((a, b) => a.position - b.position)
@@ -205,7 +200,7 @@ const ProjectItem: React.FC<{
     projectName: string;
     href: string;
     description: string;
-    image: string;
+    image: StaticImageData;
     stack?: string[];
   };
 }> = ({ project }) => {
@@ -245,23 +240,21 @@ const ProjectItem: React.FC<{
 
 const Bio: React.FC = () => {
   return (
-    <AnimationWrapper>
-      <TextBlock>
-        <BlockTitle>Биография</BlockTitle>
-        <ul className="flex flex-col gap-4">
-          {bioPeriods.map(({ period, description }) => (
-            <li key={description}>
-              <div className="flex flex-col sm:flex-row">
-                <div className="w-full text-left font-bold dark:text-stone-100 sm:max-w-[20ch]">
-                  {period}
-                </div>
-                <div className="text-left">{description}</div>
+    <TextBlock>
+      <BlockTitle>Биография</BlockTitle>
+      <ul className="flex flex-col gap-4">
+        {bioPeriods.map(({ period, description }) => (
+          <li key={description}>
+            <div className="flex flex-col sm:flex-row">
+              <div className="w-full text-left font-bold dark:text-stone-100 sm:max-w-[20ch]">
+                {period}
               </div>
-            </li>
-          ))}
-        </ul>
-      </TextBlock>
-    </AnimationWrapper>
+              <div className="text-left">{description}</div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </TextBlock>
   );
 };
 
@@ -298,19 +291,17 @@ const SkillListItem: React.FC<{
 
 const SkillSet: React.FC = () => {
   return (
-    <AnimationWrapper>
-      <TextBlock>
-        <BlockTitle>Навыки</BlockTitle>
-        <ul className="flex flex-col gap-1 sm:gap-4">
-          {skillsList.map((skillSetItem) => (
-            <SkillListItem
-              skillSetItem={skillSetItem}
-              key={skillSetItem.setName}
-            />
-          ))}
-        </ul>
-      </TextBlock>
-    </AnimationWrapper>
+    <TextBlock>
+      <BlockTitle>Навыки</BlockTitle>
+      <ul className="flex flex-col gap-1 sm:gap-4">
+        {skillsList.map((skillSetItem) => (
+          <SkillListItem
+            skillSetItem={skillSetItem}
+            key={skillSetItem.setName}
+          />
+        ))}
+      </ul>
+    </TextBlock>
   );
 };
 
@@ -319,48 +310,46 @@ const Contacts = () => {
     {
       href: 'https://github.com/ilyasudakov',
       icon: { size: '16px', Component: GithubIcon },
-      text: '@ilyasudakov',
+      text: '@ilyasudakov'
     },
     {
       href: 'mailto:ilyasudakov.dev@gmail.com',
       icon: { size: '20px', Component: MailIcon },
-      text: 'ilyasudakov.dev@gmail.com',
+      text: 'ilyasudakov.dev@gmail.com'
     },
     {
       href: 'https://www.linkedin.com/in/ilya-sudakov/',
       icon: { size: '16px', Component: LinkedInIcon },
-      text: '@ilya-sudakov',
+      text: '@ilya-sudakov'
     },
     {
       href: 'https://t.me/ilyasudakov',
       icon: { size: '16px', Component: TelegramIcon },
-      text: '@ilyasudakov',
-    },
+      text: '@ilyasudakov'
+    }
   ];
 
   return (
-    <AnimationWrapper>
-      <TextBlock>
-        <BlockTitle>Контакты</BlockTitle>
-        <div className="flex flex-col gap-2">
-          {links.map(({ href, text, icon }) => {
-            const SVGElement = icon.Component;
-            return (
-              <OutsideLink className="border-b-2" key={href} href={href}>
-                <div className="flex items-center gap-2">
-                  <SVGElement
-                    width={icon.size}
-                    height={icon.size}
-                    className="w-5 fill-fuchsia-600 dark:fill-fuchsia-400"
-                  />
-                  {text}
-                </div>
-              </OutsideLink>
-            );
-          })}
-        </div>
-      </TextBlock>
-    </AnimationWrapper>
+    <TextBlock>
+      <BlockTitle>Контакты</BlockTitle>
+      <div className="flex flex-col gap-2">
+        {links.map(({ href, text, icon }) => {
+          const SVGElement = icon.Component;
+          return (
+            <OutsideLink className="border-b-2" key={href} href={href}>
+              <div className="flex items-center gap-2">
+                <SVGElement
+                  width={icon.size}
+                  height={icon.size}
+                  className="w-5 fill-fuchsia-600 dark:fill-fuchsia-400"
+                />
+                {text}
+              </div>
+            </OutsideLink>
+          );
+        })}
+      </div>
+    </TextBlock>
   );
 };
 
