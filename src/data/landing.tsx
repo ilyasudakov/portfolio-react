@@ -2,7 +2,7 @@ import React from 'react';
 import { StaticImageData } from 'next/image';
 
 import OsfixCRMImage from '/public/projects/osfix_crm.png';
-import CMSBlogImage from '/public/projects/cms_blog.png';
+import DevHubImage from '/public/projects/devhub.png';
 import OceanImage from '/public/projects/ocean_threejs.png';
 import ReactBaseImage from '/public/projects/react_base.png';
 import RepoMDImage from '/public/projects/repo_md.png';
@@ -37,12 +37,13 @@ export const projectsList: projectsListTypes = [
     position: 2
   },
   {
-    projectName: 'CMS Блог',
-    href: 'https://github.com/ilyasudakov/cms_blog',
+    projectName: 'Dev Hub',
+    href: 'https://github.com/ilyasudakov/dev-hub',
     description:
-      'Блог с авторизацией, возможностью создавать собственные посты',
-    image: CMSBlogImage,
-    stack: ['NextJS', 'TS', 'NextAuth', 'TW'],
+      'Продуктивность и тематические статьи на одном экране. \
+      Todo list, список кастомных пользовательских ссылок, Тематические статьи Medium',
+    image: DevHubImage,
+    stack: ['React', 'TS', 'Redux', 'Redux-Toolkit', 'TW'],
     position: 3
   },
   {
@@ -138,6 +139,7 @@ export const skillsList: skillsListType = [
       'JavaScript',
       'TypeScript',
       'NextJS',
+      'Redux',
       'Redux Toolkit',
       'RTK Query',
       'TailwindCSS',

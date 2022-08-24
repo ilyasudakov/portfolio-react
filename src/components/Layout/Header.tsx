@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import GithubIcon from '/public/svg/github.svg';
 
 const ThemeSwitcher = dynamic(() => import('../ThemeSwitcher'), {
-  ssr: false,
+  ssr: false
 });
 
 const Header: React.FC = () => {
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
             width="16px"
             height="16px"
           />
-          Исходный код
+          Посмотреть код
         </a>
         <ThemeSwitcher />
       </div>
