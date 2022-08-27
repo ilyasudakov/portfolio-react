@@ -2,18 +2,21 @@ import { useRouter } from 'next/router';
 
 import ru from '../data/locales/ru';
 import en from '../data/locales/en';
-import { sectionType, sectionNameType } from '../data/locales/types';
+import { landingPageSectionsType } from '../data/locales/types';
 
-const locales = ['en', 'ru'] as const;
-export type localeType = typeof locales[number];
+const LOCALE_RU = 'ru';
+const LOCALE_EN = 'en';
 const localeData = {
-  en: en,
-  ru: ru
+  [LOCALE_EN]: en,
+  [LOCALE_RU]: ru
 };
+export type localeType = keyof typeof localeData;
 
-export default function useLang(sectionName: sectionNameType): {
+export default function useLang<K extends keyof landingPageSectionsType>(
+  sectionName: K
+): {
   locale: localeType;
-  t: sectionType;
+  t: landingPageSectionsType[K];
 } {
   const { locale: _locale, locales: _locales = [] } = useRouter();
 

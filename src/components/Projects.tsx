@@ -9,7 +9,6 @@ import { projectsType, PROJECTS_ID } from '../data/locales/types';
 
 const Projects: React.FC = () => {
   const { t } = useLang(PROJECTS_ID);
-  if (t.id !== PROJECTS_ID) return null;
 
   return (
     <TextBlock>

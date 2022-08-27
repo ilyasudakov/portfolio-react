@@ -5,7 +5,6 @@ import useLang from '../hooks/useLang';
 
 const Bio: React.FC = () => {
   const { t } = useLang(BIO_ID);
-  if (t.id !== BIO_ID) return null;
 
   return (
     <TextBlock>

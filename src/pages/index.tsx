@@ -10,6 +10,8 @@ import Projects from '../components/Projects';
 import Bio from '../components/Bio';
 import SkillSet from '../components/SkillSet';
 import Contacts from '../components/Contacts';
+import { FOOTER_ID } from '../data/locales/types';
+import useLang from '../hooks/useLang';
 
 const Home: NextPage = () => {
   return (
@@ -33,10 +35,13 @@ const Home: NextPage = () => {
 export default Home;
 
 const Copyright: React.FC = () => {
+  const { t } = useLang(FOOTER_ID);
+  if (t.id !== FOOTER_ID) return null;
+
   return (
     <div className="text-center text-sm text-stone-500 dark:text-stone-400">
-      <div>© 2022 Илья Судаков.</div>
-      <div>Сделано с NextJS, TypeScript, Tailwind.</div>
+      <div>{t.madeBy}</div>
+      <div>{t.madeWith}</div>
     </div>
   );
 };

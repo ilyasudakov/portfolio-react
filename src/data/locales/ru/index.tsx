@@ -2,6 +2,8 @@ import { SmallTextPeriod } from '../../landing';
 import {
   ABOUT_ID,
   BIO_ID,
+  CONTACTS_ID,
+  FOOTER_ID,
   HEADER_ID,
   landingPageSectionsType,
   PROJECTS_ID,
@@ -136,6 +138,15 @@ const ru: landingPageSectionsType = {
         skills: ['Русский - родной', 'Английский - B1']
       }
     ]
+  },
+  contacts: {
+    id: CONTACTS_ID,
+    title: 'Контакты'
+  },
+  footer: {
+    id: FOOTER_ID,
+    madeBy: '© 2022 Илья Судаков.',
+    madeWith: 'Сделано с NextJS, TypeScript, Tailwind.'
   }
 };
 export default ru;

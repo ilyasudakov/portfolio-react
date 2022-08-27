@@ -6,13 +6,8 @@ export const ABOUT_ID = 'about';
 export const PROJECTS_ID = 'projects';
 export const BIO_ID = 'bio';
 export const SKILLS_ID = 'skills';
-export type sectionNameType =
-  | typeof HEADER_ID
-  | typeof TITLE_ID
-  | typeof ABOUT_ID
-  | typeof PROJECTS_ID
-  | typeof SKILLS_ID
-  | typeof BIO_ID;
+export const CONTACTS_ID = 'contacts';
+export const FOOTER_ID = 'footer';
 
 export type landingPageSectionsType = {
   [HEADER_ID]: headerType;
@@ -21,14 +16,9 @@ export type landingPageSectionsType = {
   [PROJECTS_ID]: projectsType;
   [BIO_ID]: bioType;
   [SKILLS_ID]: skillsType;
+  [CONTACTS_ID]: contactsType;
+  [FOOTER_ID]: footerType;
 };
-export type sectionType =
-  | headerType
-  | titleType
-  | aboutType
-  | projectsType
-  | bioType
-  | skillsType;
 
 export type headerType = {
   id: typeof HEADER_ID;
@@ -67,4 +57,13 @@ export type skillsType = {
   id: typeof SKILLS_ID;
   title: string;
   list: { setName: string; skills: string[] }[];
+};
+export type contactsType = {
+  id: typeof CONTACTS_ID;
+  title: string;
+};
+export type footerType = {
+  id: typeof FOOTER_ID;
+  madeBy: string;
+  madeWith: string;
 };

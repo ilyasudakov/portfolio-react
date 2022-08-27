@@ -12,7 +12,6 @@ const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
 
 const About: React.FC = () => {
   const { t } = useLang(ABOUT_ID);
-  if (t.id !== ABOUT_ID) return null;
 
   return (
     <TextBlock>

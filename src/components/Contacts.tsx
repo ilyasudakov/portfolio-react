@@ -5,6 +5,8 @@ import GithubIcon from '/public/svg/github.svg';
 import MailIcon from '/public/svg/mail.svg';
 import LinkedInIcon from '/public/svg/linkedin.svg';
 import TelegramIcon from '/public/svg/telegram.svg';
+import { CONTACTS_ID } from '../data/locales/types';
+import useLang from '../hooks/useLang';
 
 const LINKS = [
   {
@@ -30,9 +32,12 @@ const LINKS = [
 ];
 
 const Contacts = () => {
+  const { t } = useLang(CONTACTS_ID);
+  if (t.id !== CONTACTS_ID) return null;
+
   return (
     <TextBlock>
-      <BlockTitle>Контакты</BlockTitle>
+      <BlockTitle>{t.title}</BlockTitle>
       <div className="flex flex-col gap-2">
         {LINKS.map(({ href, text, icon }) => {
           const SVGElement = icon.Component;

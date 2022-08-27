@@ -4,11 +4,10 @@ import { BlockTitle, TextBlock } from './Layout/Text';
 
 const SkillSet: React.FC = () => {
   const { t } = useLang(SKILLS_ID);
-  if (t.id !== SKILLS_ID) return null;
 
   return (
     <TextBlock>
-      <BlockTitle>Навыки</BlockTitle>
+      <BlockTitle>{t.title}</BlockTitle>
       <ul className="flex flex-col gap-1 sm:gap-4">
         {t.list.map((skillSetItem) => (
           <SkillListItem

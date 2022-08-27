@@ -11,7 +11,6 @@ import TelegramIcon from '/public/svg/telegram.svg';
 
 const Title: React.FC = () => {
   const { t } = useLang(TITLE_ID);
-  if (t.id !== TITLE_ID) return null;
 
   return (
     <TextBlock>
