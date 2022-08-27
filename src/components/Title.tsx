@@ -5,7 +5,7 @@ import useLang from '../hooks/useLang';
 import OutsideLink from './common/OutsideLink';
 import { TextBlock } from './Layout/Text';
 
-import HeadshotImg from '/public/headshot.jpg';
+import HeadshotImg from '/public/headshot.webp';
 import GithubIcon from '/public/svg/github.svg';
 import TelegramIcon from '/public/svg/telegram.svg';
 
