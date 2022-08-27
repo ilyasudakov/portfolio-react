@@ -1,3 +1,4 @@
+import { ABOUT_ID } from '../data/locales/types';
 import useLang from '../hooks/useLang';
 import OutsideLink from './common/OutsideLink';
 import { BlockTitle, TextBlock } from './Layout/Text';
@@ -10,7 +11,8 @@ const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
   'https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing';
 
 const About: React.FC = () => {
-  const { t } = useLang('about');
+  const { t } = useLang(ABOUT_ID);
+  if (t.id !== ABOUT_ID) return null;
 
   return (
     <TextBlock>

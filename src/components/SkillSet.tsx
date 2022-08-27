@@ -1,13 +1,16 @@
+import { SKILLS_ID } from '../data/locales/types';
+import useLang from '../hooks/useLang';
 import { BlockTitle, TextBlock } from './Layout/Text';
 
-import { skillsList } from '../data/landing';
-
 const SkillSet: React.FC = () => {
+  const { t } = useLang(SKILLS_ID);
+  if (t.id !== SKILLS_ID) return null;
+
   return (
     <TextBlock>
       <BlockTitle>Навыки</BlockTitle>
       <ul className="flex flex-col gap-1 sm:gap-4">
-        {skillsList.map((skillSetItem) => (
+        {t.list.map((skillSetItem) => (
           <SkillListItem
             skillSetItem={skillSetItem}
             key={skillSetItem.setName}

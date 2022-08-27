@@ -1,13 +1,17 @@
 import { BlockTitle, TextBlock } from './Layout/Text';
 
-import { bioPeriods } from '../data/landing';
+import { BIO_ID } from '../data/locales/types';
+import useLang from '../hooks/useLang';
 
 const Bio: React.FC = () => {
+  const { t } = useLang(BIO_ID);
+  if (t.id !== BIO_ID) return null;
+
   return (
     <TextBlock>
-      <BlockTitle>Биография</BlockTitle>
+      <BlockTitle>{t.title}</BlockTitle>
       <ul className="flex flex-col gap-4">
-        {bioPeriods.map(({ period, description }) => (
+        {t.list.map(({ period, description }) => (
           <li key={description}>
             <div className="flex flex-col sm:flex-row">
               <div className="w-full text-left font-bold dark:text-stone-100 sm:max-w-[20ch]">

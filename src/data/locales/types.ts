@@ -4,19 +4,31 @@ export const TITLE_ID = 'title';
 export const HEADER_ID = 'header';
 export const ABOUT_ID = 'about';
 export const PROJECTS_ID = 'projects';
+export const BIO_ID = 'bio';
+export const SKILLS_ID = 'skills';
 export type sectionNameType =
   | typeof HEADER_ID
   | typeof TITLE_ID
   | typeof ABOUT_ID
-  | typeof PROJECTS_ID;
+  | typeof PROJECTS_ID
+  | typeof SKILLS_ID
+  | typeof BIO_ID;
 
 export type landingPageSectionsType = {
   [HEADER_ID]: headerType;
   [TITLE_ID]: titleType;
   [ABOUT_ID]: aboutType;
   [PROJECTS_ID]: projectsType;
+  [BIO_ID]: bioType;
+  [SKILLS_ID]: skillsType;
 };
-export type sectionType = headerType | titleType | aboutType | projectsType;
+export type sectionType =
+  | headerType
+  | titleType
+  | aboutType
+  | projectsType
+  | bioType
+  | skillsType;
 
 export type headerType = {
   id: typeof HEADER_ID;
@@ -45,4 +57,14 @@ export type projectsType = {
       description: string;
     };
   };
+};
+export type bioType = {
+  id: typeof BIO_ID;
+  title: string;
+  list: { period: React.ReactNode; description: string }[];
+};
+export type skillsType = {
+  id: typeof SKILLS_ID;
+  title: string;
+  list: { setName: string; skills: string[] }[];
 };

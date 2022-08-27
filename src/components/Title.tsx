@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { TITLE_ID } from '../data/locales/types';
 import useLang from '../hooks/useLang';
 
 import OutsideLink from './common/OutsideLink';
@@ -9,7 +10,9 @@ import GithubIcon from '/public/svg/github.svg';
 import TelegramIcon from '/public/svg/telegram.svg';
 
 const Title: React.FC = () => {
-  const { t } = useLang('title');
+  const { t } = useLang(TITLE_ID);
+  if (t.id !== TITLE_ID) return null;
+
   return (
     <TextBlock>
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
