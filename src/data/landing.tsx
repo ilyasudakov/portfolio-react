@@ -1,14 +1,14 @@
 import React from 'react';
 import { StaticImageData } from 'next/image';
 
-import OsfixCRMImage from '/public/projects/osfix_crm.png';
-import DevHubImage from '/public/projects/devhub.png';
-import OceanImage from '/public/projects/ocean_threejs.png';
-import ReactBaseImage from '/public/projects/react_base.png';
-import RepoMDImage from '/public/projects/repo_md.png';
-import TechStackImage from '/public/projects/techstack.png';
-import SpotifyImage from '/public/projects/spotify_stats.png';
-import WeatherImage from '/public/projects/weather_app.png';
+import OsfixCRMImage from '/public/projects/osfix_crm.webp';
+import DevHubImage from '/public/projects/devhub.webp';
+import OceanImage from '/public/projects/ocean_threejs.webp';
+import ReactBaseImage from '/public/projects/react_base.webp';
+import RepoMDImage from '/public/projects/repo_md.webp';
+import TechStackImage from '/public/projects/techstack.webp';
+import SpotifyImage from '/public/projects/spotify_stats.webp';
+import WeatherImage from '/public/projects/weather_app.webp';
 
 export const projectsIds = [
   'crm',
