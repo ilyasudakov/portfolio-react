@@ -1,3 +1,4 @@
+import useLang from '../hooks/useLang';
 import OutsideLink from './common/OutsideLink';
 import { BlockTitle, TextBlock } from './Layout/Text';
 
@@ -9,24 +10,21 @@ const GOOGLE_DRIVE_PORTFOLIO_PDF_URL =
   'https://drive.google.com/file/d/1_5V65DH8ViKQnO1OB_c2cQW1vYQSn7zJ/view?usp=sharing';
 
 const About: React.FC = () => {
+  const { t } = useLang('about');
+
   return (
     <TextBlock>
-      <BlockTitle>Обо мне</BlockTitle>
+      <BlockTitle>{t.title}</BlockTitle>
       <div className="flex flex-col gap-4">
         <div className="indent-6">
-          React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу
-          работу по вакансии junior-разработчик. Вы можете посмотреть{' '}
+          {t.text1}{' '}
           <OutsideLink href={GOOGLE_DRIVE_PORTFOLIO_PDF_URL}>
-            мое портфолио
+            {t.link1}
           </OutsideLink>{' '}
-          или
-          <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}> скачать CV.</OutsideLink>
+          {t.text2}
+          <OutsideLink href={GOOGLE_DRIVE_CV_PDF_URL}>{t.link2}</OutsideLink>
         </div>
-        <div className="indent-6">
-          Ищу возможности получения реального опыта разработки, работы в
-          команде, полезного фидбека для улучшения своих навыков и получения
-          новых знаний. Быстро обучаем, люблю учиться.
-        </div>
+        <div className="indent-6">{t.text3}</div>
       </div>
     </TextBlock>
   );

@@ -10,80 +10,78 @@ import TechStackImage from '/public/projects/techstack.png';
 import SpotifyImage from '/public/projects/spotify_stats.png';
 import WeatherImage from '/public/projects/weather_app.png';
 
-type projectsListTypes = {
-  projectName: string;
+export const projectsIds = [
+  'crm',
+  'repo.md',
+  'devhub',
+  'techstack',
+  'react-base',
+  'weather-app',
+  'spotify',
+  'ocean'
+] as const;
+
+export type projectType = {
+  id: typeof projectsIds[number];
   href: string;
-  description: string;
   image: StaticImageData;
   stack?: string[];
   position: number;
-}[];
+};
 
-export const projectsList: projectsListTypes = [
+export const projectsList: projectType[] = [
   {
-    projectName: 'CRM/ERP система',
+    id: 'crm',
     href: 'https://github.com/ilyasudakov/CRM_frontend',
-    description: 'Фронтенд для системы управления малым предприятием',
     image: OsfixCRMImage,
     stack: ['React', 'SCSS', 'Jest', 'RTL'],
     position: 1
   },
   {
-    projectName: 'repo.md',
+    id: 'repo.md',
     href: 'https://github.com/ilyasudakov/repo.md',
-    description: 'Ваш Github репозиторий как Markdown блог',
     image: RepoMDImage,
     stack: ['NextJS', 'TS', 'NextAuth', 'TW', 'Jest', 'RTL'],
     position: 2
   },
   {
-    projectName: 'Dev Hub',
+    id: 'devhub',
     href: 'https://github.com/ilyasudakov/dev-hub',
-    description:
-      'Продуктивность и тематические статьи на одном экране. \
-      Todo list, список кастомных пользовательских ссылок, Тематические статьи Medium',
     image: DevHubImage,
     stack: ['React', 'TS', 'Redux', 'Redux-Toolkit', 'TW'],
     position: 3
   },
   {
-    projectName: 'TechStack',
+    id: 'techstack',
     href: 'https://github.com/ilyasudakov/tech-stack',
-    description: 'Соберите свой стек из Github репозиториев',
     image: TechStackImage,
     stack: ['Redux-Toolkit', 'RTK Query', 'TS', 'TW'],
     position: 4
   },
   {
-    projectName: 'react-base',
+    id: 'react-base',
     href: 'https://github.com/ilyasudakov/basic-react-boilerplate',
-    description: 'Простой шаблон для React-проектов',
     image: ReactBaseImage,
     stack: ['React', 'Webpack 5', 'SCSS', 'Jest/RTL'],
     position: 5
   },
   {
-    projectName: 'Weather App',
+    id: 'weather-app',
     href: 'https://github.com/ilyasudakov/weatherApp',
-    description:
-      'Приложение для просмотра погоды по геолокации пользователя, с возможностью просмотра прогноза на 7 дней',
     image: WeatherImage,
     stack: ['React', 'SCSS'],
     position: 6
   },
   {
-    projectName: 'Spotify Statistics',
+    id: 'spotify',
     href: 'https://github.com/ilyasudakov/music_app',
-    description:
-      'Приложение для просмотра любимых песен/исполнителей, а также получение списка рекомендаций в Spotify',
     image: SpotifyImage,
     stack: ['React', 'SCSS'],
     position: 7
   },
   {
-    projectName: 'Ocean',
+    id: 'ocean',
     href: 'https://github.com/ilyasudakov/ThreeJS_test',
-    description: 'Простой эксперимент с использованием ThreeJS',
     image: OceanImage,
     stack: ['React', 'React-Three-Fiber'],
     position: 8

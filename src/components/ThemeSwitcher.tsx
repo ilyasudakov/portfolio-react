@@ -52,7 +52,7 @@ const ThemeSwitcher: React.FC = () => {
     <div
       onClick={() => changeTheme()}
       ref={ref}
-      className="cursor-pointer rounded bg-fuchsia-300 p-2 transition-all dark:bg-stone-500"
+      className="cursor-pointer rounded border border-transparent bg-fuchsia-300 p-2 transition-all dark:bg-stone-500"
     >
       {selectedTheme === THEMES.DARK ? (
         <SunIcon width={ICON_SIZE} height={ICON_SIZE} />

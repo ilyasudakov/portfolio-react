@@ -4,12 +4,12 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     images: {
-      allowFutureImage: true,
-    },
+      allowFutureImage: true
+    }
   },
   i18n: {
-    locales: ['ru'],
     defaultLocale: 'ru',
+    locales: ['ru', 'en']
   },
   webpack(config) {
     config.module.rules.push({
@@ -26,18 +26,18 @@ const nextConfig = {
                 {
                   name: 'preset-default',
                   params: {
-                    overrides: { removeViewBox: false },
-                  },
-                },
-              ],
+                    overrides: { removeViewBox: false }
+                  }
+                }
+              ]
             },
-            titleProp: true,
-          },
-        },
-      ],
+            titleProp: true
+          }
+        }
+      ]
     });
     return config;
-  },
+  }
 };
 
 module.exports = nextConfig;

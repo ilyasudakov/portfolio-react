@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import useLang from '../hooks/useLang';
 
 import OutsideLink from './common/OutsideLink';
 import { TextBlock } from './Layout/Text';
@@ -8,14 +9,15 @@ import GithubIcon from '/public/svg/github.svg';
 import TelegramIcon from '/public/svg/telegram.svg';
 
 const Title: React.FC = () => {
+  const { t } = useLang('title');
   return (
     <TextBlock>
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold dark:text-stone-50">
-            Илья Судаков
+            {t.fullName}
           </h1>
-          <h2>React-разработчик</h2>
+          <h2>{t.position}</h2>
           <TitleLinks />
         </div>
         <div className="flex w-[100px] self-end overflow-hidden rounded-full border-2 border-gray-300 dark:border-stone-400 sm:self-center">
