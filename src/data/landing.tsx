@@ -7,7 +7,7 @@ import OceanImage from '/public/projects/ocean_threejs.webp';
 import ReactBaseImage from '/public/projects/react_base.webp';
 import RepoMDImage from '/public/projects/repo_md.webp';
 import TechStackImage from '/public/projects/techstack.webp';
-import SpotifyImage from '/public/projects/spotify_stats.webp';
+import CurrenciesImage from '/public/projects/currencyconverter.webp';
 import WeatherImage from '/public/projects/weather_app.webp';
 
 export const projectsIds = [
@@ -17,7 +17,7 @@ export const projectsIds = [
   'techstack',
   'react-base',
   'weather-app',
-  'spotify',
+  'currencyconverter',
   'ocean'
 ] as const;
 
@@ -59,23 +59,23 @@ export const projectsList: projectType[] = [
     position: 4
   },
   {
+    id: 'currencyconverter',
+    href: 'https://github.com/ilyasudakov/conversion-test-task-DS',
+    image: CurrenciesImage,
+    stack: ['React', 'TS', 'Jest/RTL', 'TW'],
+    position: 5
+  },
+  {
     id: 'react-base',
     href: 'https://github.com/ilyasudakov/basic-react-boilerplate',
     image: ReactBaseImage,
     stack: ['React', 'Webpack 5', 'SCSS', 'Jest/RTL'],
-    position: 5
+    position: 6
   },
   {
     id: 'weather-app',
     href: 'https://github.com/ilyasudakov/weatherApp',
     image: WeatherImage,
-    stack: ['React', 'SCSS'],
-    position: 6
-  },
-  {
-    id: 'spotify',
-    href: 'https://github.com/ilyasudakov/music_app',
-    image: SpotifyImage,
     stack: ['React', 'SCSS'],
     position: 7
   },

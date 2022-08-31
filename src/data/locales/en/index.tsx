@@ -66,11 +66,11 @@ const projects: landingPageSectionsType[typeof PROJECTS_ID] = {
         "Web app for viewing weather info \
         by user's location with ability to view forecast for 7 days"
     },
-    spotify: {
-      title: 'Spotify Statistics',
+    currencyconverter: {
+      title: 'Currency converter',
       description:
-        'Web app for viewing\
-        favorite songs/artists, and also recomendations list in Spotify'
+        "SPA for converting currencies with detection of user's \
+        default currency. Test case for a position at Digital Security. "
     },
     ocean: {
       title: 'Ocean',

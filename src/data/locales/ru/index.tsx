@@ -66,11 +66,11 @@ const projects: landingPageSectionsType[typeof PROJECTS_ID] = {
         'Приложение для просмотра погоды по \
         геолокации пользователя, с возможностью просмотра прогноза на 7 дней'
     },
-    spotify: {
-      title: 'Spotify Statistics',
+    currencyconverter: {
+      title: 'Конвертация валют',
       description:
-        'Приложение для просмотра\
-       любимых песен/исполнителей, а также получение списка рекомендаций в Spotify'
+        'SPA для конвертирования валют, с определением дефолтной валюты пользователя \
+        на основе его локали. Тестовое задание для Digital Security.'
     },
     ocean: {
       title: 'Ocean',
