@@ -25,7 +25,7 @@ const about: landingPageSectionsType[typeof ABOUT_ID] = {
   title: 'Обо мне',
   text1:
     'React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу \
-  работу по вакансии junior-разработчик. Вы можете посмотреть ',
+  работу по вакансии Frontend разработчик (React). Вы можете посмотреть ',
   link1: 'мое портфолио',
   link2: ' скачать CV.',
   text2: 'или',
@@ -116,21 +116,15 @@ const skills: landingPageSectionsType[typeof SKILLS_ID] = {
       setName: 'Фронтенд',
       skills: [
         'React',
-        'Context API',
-        'JavaScript',
-        'TypeScript',
+        'Javascript/Typescript',
         'NextJS',
-        'Redux',
-        'Redux Toolkit',
+        'Context API/Redux/Redux Toolkit',
         'RTK Query',
-        'TailwindCSS',
         'Jest/RTL',
         'NextAuth',
-        'CSS/SCSS',
-        'HTML',
+        'CSS/SCSS/Tailwind',
         'Работа с API',
-        'Webpack',
-        'Vite'
+        'Webpack/Vite'
       ]
     },
     {

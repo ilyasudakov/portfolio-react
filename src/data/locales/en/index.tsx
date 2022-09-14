@@ -116,21 +116,15 @@ const skills: landingPageSectionsType[typeof SKILLS_ID] = {
       setName: 'Frontend',
       skills: [
         'React',
-        'Context API',
-        'JavaScript',
-        'TypeScript',
+        'Javascript/Typescript',
         'NextJS',
-        'Redux',
-        'Jest/RTL',
-        'Redux Toolkit',
+        'Context API/Redux/Redux Toolkit',
         'RTK Query',
-        'TailwindCSS',
+        'Jest/RTL',
         'NextAuth',
-        'CSS/SCSS',
-        'HTML',
-        'API',
-        'Webpack',
-        'Vite'
+        'CSS/SCSS/Tailwind',
+        'API requests',
+        'Webpack/Vite'
       ]
     },
     {
