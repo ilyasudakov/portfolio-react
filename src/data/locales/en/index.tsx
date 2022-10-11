@@ -18,14 +18,14 @@ const header: landingPageSectionsType[typeof HEADER_ID] = {
 const title: landingPageSectionsType[typeof TITLE_ID] = {
   id: TITLE_ID,
   fullName: 'Ilya Sudakov',
-  position: 'React developer'
+  position: 'Technical writer / React developer'
 };
 const about: landingPageSectionsType[typeof ABOUT_ID] = {
   id: ABOUT_ID,
   title: 'About me',
   text1:
-    'React developer based in Saint-Petersburg, Russia, 24 y.o. Currently \
-    looking for a position as a React/Frontend developer. You can check out ',
+    'React developer based in Almaty, Kazakhstan, 24 y.o. Currently \
+    working as a Technical writer in Improvado. You can check out ',
   link1: 'my portfolio',
   link2: ' download CV.',
   text2: 'or',
@@ -104,6 +104,14 @@ const bio: landingPageSectionsType[typeof BIO_ID] = {
         </span>
       ),
       description: 'Service on conscription'
+    },
+    {
+      period: (
+        <span>
+          2022 <SmallTextPeriod>october</SmallTextPeriod> — present
+        </span>
+      ),
+      description: 'Технический писатель в Improvado.'
     }
   ]
 };

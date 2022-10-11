@@ -18,14 +18,14 @@ const header: landingPageSectionsType[typeof HEADER_ID] = {
 const title: landingPageSectionsType[typeof TITLE_ID] = {
   id: TITLE_ID,
   fullName: 'Илья Судаков',
-  position: 'React разработчик'
+  position: 'Технический писатель / React разработчик'
 };
 const about: landingPageSectionsType[typeof ABOUT_ID] = {
   id: ABOUT_ID,
   title: 'Обо мне',
   text1:
-    'React-разработчик из Санкт-Петербурга, 24 года. В данный момент ищу \
-  работу по вакансии Frontend разработчик (React). Вы можете посмотреть ',
+    'React-разработчик из Алматы, Казахстан, 24 года. В данный момент работаю \
+  Техническим писателем в Improvado. Вы можете посмотреть ',
   link1: 'мое портфолио',
   link2: ' скачать CV.',
   text2: 'или',
@@ -103,7 +103,15 @@ const bio: landingPageSectionsType[typeof BIO_ID] = {
           <SmallTextPeriod>май</SmallTextPeriod>
         </span>
       ),
-      description: 'Служба по призыву'
+      description: 'Служба по призыву.'
+    },
+    {
+      period: (
+        <span>
+          2022 <SmallTextPeriod>октябрь</SmallTextPeriod> — по настоящее время
+        </span>
+      ),
+      description: 'Технический писатель в Improvado.'
     }
   ]
 };
